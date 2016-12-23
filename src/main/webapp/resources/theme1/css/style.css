@@ -1,0 +1,11 @@
+.topContainer{
+	background-color: #2196f3;
+	height:40px;
+}
+.singBtn{
+	margin-right:50px;
+	color:#ffffff;
+	pading:5px;
+	background-color:#1565c0;
+	font-weight:bold;
+}
