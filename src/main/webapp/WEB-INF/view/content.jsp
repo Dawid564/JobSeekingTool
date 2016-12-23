@@ -10,7 +10,9 @@
 	</head>
 	<body>
 		<h1>${welcome}</h1>
-		<h1>security site</h1>
+		<h1>${friend}</h1>
 		<h1>if you can read this you are a hackerman</h1>
+		
+
 	</body>
 </html>

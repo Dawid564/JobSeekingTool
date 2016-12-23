@@ -11,6 +11,7 @@ public class ContentController {
 	@RequestMapping(value="/content", method = RequestMethod.GET)
 	public String login(Model model){
 		model.addAttribute("welcome", "welcome on secret site only for real robots!!");
+		model.addAttribute("friend", "i like trains");
 		return "content";
 	}
 }
