@@ -13,7 +13,7 @@
 				<div class="row">
 					<div class="topContainer">
 						<div class="pull-right btn">
-							<form action="<c:url value="/login" />" method="GET">
+							<form action="<c:url value="/register" />" method="GET">
 	    						<input type="submit" name="action" value="Sign up" />
 							</form>
 						</div>

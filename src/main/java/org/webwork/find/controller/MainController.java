@@ -19,4 +19,9 @@ public class MainController {
 		model.addAttribute("company", serviceCompany.getAllCompanys());
 		return "main";
 	}
+	
+	@RequestMapping(value="/index", method=RequestMethod.GET)
+	public String String (Model model){
+		return "index";
+	}
 }

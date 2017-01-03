@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 import org.webwork.find.domain.RecrutationProcess;
+import org.webwork.find.domain.User;
 import org.webwork.find.repositor.InMemoryCompany;
 
 @Repository
@@ -30,6 +31,11 @@ public class InMemoryCompanyImpl implements InMemoryCompany{
 	
 	public List<RecrutationProcess> getAllCompanys() {
 		return listOfCompany;
+	}
+
+	public String addNewUser(User user) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
