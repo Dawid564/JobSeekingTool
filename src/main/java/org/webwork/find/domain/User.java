@@ -11,7 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "users1", catalog = "webwork")
+@Table(name = "users", catalog = "webwork")
 public class User {
 	
 	@Id
@@ -20,7 +20,7 @@ public class User {
 	
 	private String lastName;
 	
-	@Column(name = "password", nullable = false)
+	@Column(name = "password", nullable = false, length = 60 )
 	private String password;
 	
 	private String email;
@@ -32,6 +32,12 @@ public class User {
 	private Set<UserRole> userRole = new HashSet<UserRole>(0);
 	
 	public User(){}
+	
+	public User(String firstName, String password, Set<UserRole> userRole){
+		this.firstName = firstName;
+		this.password = password;
+		this.userRole = userRole;
+	}
 	
 	public User(String firstName, String lastName, String password, String email){
 		this.firstName = firstName;

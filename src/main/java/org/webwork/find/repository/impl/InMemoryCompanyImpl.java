@@ -19,9 +19,9 @@ public class InMemoryCompanyImpl implements InMemoryCompany{
 	}
 	
 	public void getAllCompany(){
-		RecrutationProcess recrutation1 = new RecrutationProcess("zut", "firma dla pedizow");
-		RecrutationProcess recrutation2 = new RecrutationProcess("tieto", "kutasiarze");
-		RecrutationProcess recrutation3 = new RecrutationProcess("iai", "pederasci");
+		RecrutationProcess recrutation1 = new RecrutationProcess("zut", "najlepsza firma");
+		RecrutationProcess recrutation2 = new RecrutationProcess("us", "najslabsza firma");
+		RecrutationProcess recrutation3 = new RecrutationProcess("pum", "nie polecam");
 		
 		listOfCompany.add(recrutation1);
 		listOfCompany.add(recrutation2);

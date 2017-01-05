@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "user_roles1", catalog = "webwork", uniqueConstraints = @UniqueConstraint(columnNames = {"role", "userName"}))
+@Table(name = "user_roles", catalog = "webwork", uniqueConstraints = @UniqueConstraint(columnNames = {"role", "userName"}))
 public class UserRole {
 
 	@Id

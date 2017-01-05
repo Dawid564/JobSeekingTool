@@ -4,4 +4,5 @@ import org.webwork.find.domain.User;
 
 public interface UserHibernate {
 	String addNewUser(User user);
+	User findUserByName(String userName);
 }
