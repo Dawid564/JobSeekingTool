@@ -11,6 +11,6 @@ public class PaymentController {
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public String payment (Model model){
-		return null;
+		return "payment";
 	}
 }

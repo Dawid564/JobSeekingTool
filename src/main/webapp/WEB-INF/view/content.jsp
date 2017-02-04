@@ -65,13 +65,13 @@
 			class="topMenuList list-group col-md-offset-2 col-sm-offset-1 col-xs-offset-0 col-md-8 col-sm-10 col-xs-12">
 			<li
 				class="topMenuListElement btn btn-default col-md-3 col-sm-6 col-xs-12"><a
-				href="/#"><spring:message code="menu.tab.first" /></a></li>
+				href="/"><spring:message code="menu.tab.first" /></a></li>
 			<li
 				class="topMenuListElement btn btn-default col-md-3 col-sm-6 col-xs-12"><a
 				href="content"><spring:message code="menu.tab.second" /></a></li>
 			<li
 				class="topMenuListElement btn btn-default col-md-3 col-sm-6 col-xs-12"><a
-				href="#"><spring:message code="menu.tab.third" /></a></li>
+				href="payment"><spring:message code="menu.tab.third" /></a></li>
 			<li
 				class="topMenuListElement btn btn-default col-md-3 col-sm-6 col-xs-12"><a
 				href="#"><spring:message code="menu.tab.fourth" /></a></li>
