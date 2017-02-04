@@ -9,7 +9,7 @@
 	</head>
 	<body>
 		<div>
-			<h1>${pedaly}</h1>
+			<h1>${smok}</h1>
 		</div>
 			<h1>jestes prawdziwym hakerem</h1>
 			

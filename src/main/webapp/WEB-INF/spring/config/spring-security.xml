@@ -16,7 +16,7 @@
 	<context:component-scan base-package="org.webwork.*"/>
 	<http auto-config="true" use-expressions="true">
 
-		<intercept-url pattern="/content**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/content**" access="hasRole('ROLE_USER')" />
 		
 		<access-denied-handler error-page="/main" />
 		
@@ -30,7 +30,6 @@
 		<logout
 			logout-url="/j_spring_security_logout" 
 			logout-success-url="/" />
-		<!-- do i enable csrf protection ????????-->
 		<csrf />
 	</http>
 	
@@ -40,25 +39,16 @@
 
 	<beans:bean id="authenticationManager" class="org.springframework.security.authentication.ProviderManager">
 		<beans:constructor-arg name="providers">
-			<!-- <beans:property name="providers">   not supported till spring3--> 
 				<beans:list>
 					<beans:ref bean="daoAuthenticationProvider"/>
 				</beans:list>
-			<!--  </beans:property>  -->
 		</beans:constructor-arg>
 	</beans:bean>
 
 	<authentication-manager>
 	  <authentication-provider user-service-ref="userDetailService">
 	  	<password-encoder hash="bcrypt"></password-encoder>
-	  	<!-- 
-	  	JDBC old
-	  	<jdbc-user-service 
-	  		data-source-ref="dataSource" 
-	  		users-by-username-query="SELECT userName, password, enabled FROM users WHERE userName=?"
-	  		authorities-by-username-query="SELECT userName, role FROM user_roles WHERE userName=?"/> 
-	  	-->
 	  </authentication-provider>
 	</authentication-manager>
-<mvc:annotation-driven /> 
+	<!-- <mvc:annotation-driven />  --> 
 </beans:beans>

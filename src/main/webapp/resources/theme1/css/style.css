@@ -1,11 +1,124 @@
-.topContainer{
-	background-color: #2196f3;
-	height:40px;
+body {
+	margin: auto;
 }
-.singBtn{
-	margin-right:50px;
-	color:#ffffff;
-	pading:5px;
-	background-color:#1565c0;
-	font-weight:bold;
+
+.topContainer {
+	background-color: #E5E5DB;
+	height: 60px;
+}
+
+.topMenu {
+	background-color: #E5E5DB;
+	height: 37px;
+	border-top-style: solid;
+}
+
+.topMenuList {
+	list-style: none;
+}
+
+.topMenuListElement {
+	padding-left: 40px;
+	padding-right: 40px;
+}
+
+li {
+	display: inline;
+}
+
+.singBtn {
+	color: #000000;
+	pading: 5px;
+	margin-top: 6px;
+	font-weight: bold;
+}
+
+.logOutBtn {
+	color: #000000;
+	pading: 5px;
+	font-weight: bold;
+}
+
+.mainFirstContainer {
+	height: 250px;
+}
+
+.mainSecondContainer {
+	background-color: #8A99FF;
+	height: 250px;
+}
+
+a:link {
+	/* Applies to all unvisited links */
+	text-decoration: none;
+	font-weight: bold;
+	color: black;
+}
+
+a:visited {
+	/* Applies to all visited links */
+	text-decoration: none;
+	font-weight: bold;
+	color: black;
+}
+
+.logo {
+	background-color: blue;
+	width: 150px;
+	padding: 5px;
+	margin-top: 5px;
+}
+
+.leftTabelPanel {
+	margin-top: 15px;
+	padding: 10px;
+	border: 10px;
+	border-style: solid;
+	border: 1px;
+}
+.leftTabelTopBtn{
+	font-size: large;
+	font-weight: bold;
+}
+
+.topAddPanel {
+	margin-top: 15px;
+}
+
+.alertLabel {
+	color: red;
+	font-weight: bold;
+}
+
+.mainContentPanel{
+	margin-top:25px;
+	margin-bottom: 25px;
+}
+.topFormElement{
+	height:60px;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+.holdImage{
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+.firstMilestone{
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+.correctTextArea{
+	height:120px;
+}
+.midFormElement{
+	height:60px;
+	margin-top:10px;
+	margin-bottom:10px;
+	clear:both
+}
+.secondPart{
+	margin-top:20px;
+}
+.correctTextAreaStrength{
+	height:300px;
 }
