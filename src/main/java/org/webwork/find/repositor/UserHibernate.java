@@ -14,4 +14,5 @@ public interface UserHibernate {
 	SeekingProcess setProperProcess(String processName);
 	boolean checkIsProcessExist(String processName);
 	String updateSeekingProcess(SeekingProcess seekingProcess);
+	String addUserPayment();
 }

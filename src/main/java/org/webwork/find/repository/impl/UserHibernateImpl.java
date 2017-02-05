@@ -2,6 +2,7 @@ package org.webwork.find.repository.impl;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Query;
@@ -17,6 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 import org.webwork.find.domain.SeekingProcess;
 import org.webwork.find.domain.User;
+import org.webwork.find.domain.UserPayment;
 import org.webwork.find.domain.UserRole;
 import org.webwork.find.repositor.UserHibernate;
 
@@ -218,5 +220,52 @@ public class UserHibernateImpl implements UserHibernate{
 		queryForSide.executeUpdate();
 		query.executeUpdate();
 		return null;
+	}
+
+	//add to database information about user activated account
+	public String addUserPayment() {
+		Date currentDate = new Date();
+		Date startDate = new Date(currentDate.getTime());// today 
+		
+		Date expiredDate = new Date();
+		expiredDate.setTime(currentDate.getTime() + 2592000000L);// date when user account expired, add 30 days to current date
+		
+		User usr = new User();
+		usr = getUserFromDatabase(getUserName());
+		
+		UserPayment userPayment = new UserPayment(usr, startDate, expiredDate);
+		
+		UserPayment userPaymentFromDatabase = new UserPayment();
+		if(getUserPaymentFromDatabase(usr).isEmpty()){
+			//do nothing
+		}else{
+			userPaymentFromDatabase = getUserPaymentFromDatabase(usr).get(0);
+		}
+		
+		if(getUserPaymentFromDatabase(usr).isEmpty()){ //user buy his first subscription
+			System.out.println("WOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLO1");
+			getSession().save(userPayment);
+		}else if(startDate.after(userPaymentFromDatabase.getExpiredDate())){//when user extend his subscription before end his actual sub
+			System.out.println("WOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLO2");
+			getSession().createQuery("DELETE FROM UserPayment WHERE user= :userName").setParameter("userName", usr).executeUpdate();
+			getSession().saveOrUpdate(userPayment);
+		}else if(startDate.before(userPaymentFromDatabase.getExpiredDate())){//when user extend his subscription after end his actual sub
+			
+			//to improve
+			System.out.println("WOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLO3");
+			userPayment.setExpiredDate(expiredDate);
+			getSession().createQuery("DELETE FROM UserPayment WHERE user= :userName").setParameter("userName", usr).executeUpdate();
+			getSession().save(userPayment);
+		}
+		return null;
+	}
+	
+	@SuppressWarnings("unchecked")
+	private List<UserPayment> getUserPaymentFromDatabase(User u){
+		List<UserPayment> user = new ArrayList<UserPayment>();
+		
+		user = getSession().createQuery("FROM UserPayment WHERE user= :userName").setParameter("userName", u).getResultList();
+		System.out.println("WOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLO5");
+		return user;
 	}
 }
