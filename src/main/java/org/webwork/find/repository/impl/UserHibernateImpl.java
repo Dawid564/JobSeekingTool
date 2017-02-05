@@ -250,8 +250,9 @@ public class UserHibernateImpl implements UserHibernate{
 			getSession().createQuery("DELETE FROM UserPayment WHERE user= :userName").setParameter("userName", usr).executeUpdate();
 			getSession().saveOrUpdate(userPayment);
 		}else if(startDate.before(userPaymentFromDatabase.getExpiredDate())){//when user extend his subscription after end his actual sub
-			
-			//to improve
+			Long milisec = userPaymentFromDatabase.getExpiredDate().getTime() + 2592000000L; 
+			expiredDate.setTime(milisec);
+
 			System.out.println("WOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLO3");
 			userPayment.setExpiredDate(expiredDate);
 			getSession().createQuery("DELETE FROM UserPayment WHERE user= :userName").setParameter("userName", usr).executeUpdate();
