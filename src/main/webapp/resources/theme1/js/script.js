@@ -1,94 +1,113 @@
 document.addEventListener("DOMContentLoaded", function(event) {
-	//do nothing
+	// do nothing
 });
-function checkCheckBox(c){
-	if(c == "true"){
+function checkCheckBox(c) {
+	if (c == "true") {
 		document.getElementById("sendResume").checked = true;
-	}else{
+	} else {
 		document.getElementById("sendResume").checked = false;
 	}
 }
-function checkCheckBoxRightClothing(c){
-	if(c == "true"){
+function checkCheckBoxRightClothing(c) {
+	if (c == "true") {
 		document.getElementById("rightClothing").checked = true;
-	}else{
+	} else {
 		document.getElementById("rightClothing").checked = false;
 	}
 }
-function checkCheckBoxRemindResume(c){
-	if(c == "true"){
+function checkCheckBoxRemindResume(c) {
+	if (c == "true") {
 		document.getElementById("remindResume").checked = true;
-	}else{
+	} else {
 		document.getElementById("remindResume").checked = false;
 	}
 }
-function checkCheckBoxImportantDocs(c){
-	if(c == "true"){
+function checkCheckBoxImportantDocs(c) {
+	if (c == "true") {
 		document.getElementById("importantDocs").checked = true;
-	}else{
+	} else {
 		document.getElementById("importantDocs").checked = false;
 	}
 }
 
-function submitDocument(){
-	document.getElementById("logOut").submit();	
+function submitDocument() {
+	document.getElementById("logOut").submit();
 }
-function checkAddProcessName(){
+function checkAddProcessName() {
 	var data = document.getElementById('processName').value;
-	if(data == ""){
+	if (data == "") {
 		document.getElementById('alert').innerHTML = "This gap can't be empty";
-	}else{
+	} else {
 		document.getElementById('alert').innerHTML = "";
 		document.getElementById('processNameForm').submit();
 	}
 }
-function delButton(asd){
-	document.getElementById('hiddenButton').value=asd;
+function delButton(asd) {
+	document.getElementById('hiddenButton').value = asd;
 	document.getElementById('delButton').submit();
 }
-function sendFirstMileStone(){
-	//exception
-	//document.getElementById('wholeSeekingProcess').submit();
-	
+function sendFirstMileStone() {
+	// exception
+	// document.getElementById('wholeSeekingProcess').submit();
+
 	var responseDateVal = document.getElementById("responseDate").value;
 	var dateReg = /^\d{4}([./-])\d{2}\1\d{2}$/;
-	
-	if(dateReg.test(responseDateVal) || responseDateVal == "YYYY-MM-DD"){
+
+	if (dateReg.test(responseDateVal) || responseDateVal == "YYYY-MM-DD") {
 		document.getElementById('wholeSeekingProcess').submit();
-	}else{
+	} else {
 		document.getElementById("responseDateError").innerHTML = "Date must looks like 2001-12-31 (YYYY-MM-DD)";
 	}
 }
-function setProcessOnFront(processId){
-	document.getElementById('getProcessHidden').value=processId;
+function setProcessOnFront(processId) {
+	document.getElementById('getProcessHidden').value = processId;
 	document.getElementById('getProcessId').submit();
 }
-function checkTextarea(txt){
+function checkTextarea(txt) {
 	document.getElementById("companyDescription").value = txt;
 }
-function checkTextareaWQuestions(txt){
+function checkTextareaWQuestions(txt) {
 	document.getElementById("questionsPhoneCall").value = txt;
 }
-function checkTextareaNotes(txt){
+function checkTextareaNotes(txt) {
 	document.getElementById("notesPhoneCall").value = txt;
 }
-function checkTextareaStrengths(txt){
+function checkTextareaStrengths(txt) {
 	document.getElementById("strengths").value = txt;
 }
-function checkTextareaWeakness(txt){
+function checkTextareaWeakness(txt) {
 	document.getElementById("weakness").value = txt;
 }
-function responseDate(responseDate){
-	if(responseDate != ""){
-		document.getElementById("responseDate").value = responseDate.substring(0, 10);
-	}else{
+function responseDate(responseDate) {
+	if (responseDate != "") {
+		document.getElementById("responseDate").value = responseDate.substring(
+				0, 10);
+	} else {
 		document.getElementById("responseDate").value = "YYYY-MM-DD";
 	}
 }
-function interviewTime(responseDate){
-//	if(responseDate != ""){
-//		document.getElementById("responseDate").value = responseDate.substring(0, 10);
-//	}else{
-//		document.getElementById("responseDate").value = "YYYY-MM-DD";
-//	}
+function interviewTime(responseDate) {
+	// if(responseDate != ""){
+	// document.getElementById("responseDate").value = responseDate.substring(0,
+	// 10);
+	// }else{
+	// document.getElementById("responseDate").value = "YYYY-MM-DD";
+	// }
+}
+function checkPass() {
+	var pass1 = document.getElementById("pass1").value;
+	console.log("pass1 " + pass1);
+	var pass2 = document.getElementById("pass2").value;
+	console.log("pass2 " + pass2);
+	if (pass1 == pass2) {
+		alert("passwords is the same");
+		setForm();
+	} else {
+		alert("passwords is diffrent");
+	}
+}
+
+function setForm() {
+	console.log("how often i see this");
+	document.getElementById("registerForm").submit();
 }

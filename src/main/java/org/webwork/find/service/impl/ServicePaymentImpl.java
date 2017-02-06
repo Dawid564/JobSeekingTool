@@ -24,7 +24,9 @@ public class ServicePaymentImpl implements ServicePayment{
 	public String getAvaliabilityAccount() {
 		Long milisec = userHibernate.getAvaliabilityAccount();
 		Long modernMilisec = milisec;
-		if(modernMilisec <= 172800000L){
+		if(modernMilisec == 0L){
+			return "";
+		}else if(modernMilisec <= 172800000L){
 			modernMilisec = (((milisec/1000)/60)/60);
 			return modernMilisec.toString() + " Hours Left";
 		}else{
@@ -34,7 +36,11 @@ public class ServicePaymentImpl implements ServicePayment{
 	}
 
 	public String checkUserPremiumStatus() {
+		if(userHibernate.checkUserPremiumStatus()){
+			return null;
+		}else{
+			return "You have to buy premium for 1$ to use this tool";
+		}
 		
-		return null;
 	}
 }

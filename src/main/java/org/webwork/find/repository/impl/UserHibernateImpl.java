@@ -296,13 +296,17 @@ public class UserHibernateImpl implements UserHibernate{
 	public Long getAvaliabilityAccount() {
 		List<UserPayment> availabilityAccount = new ArrayList<UserPayment>();
 		availabilityAccount = getUserPaymentFromDatabase(getUserFromDatabase(getUserName()));
+		try{
+			UserPayment userAvaliabilityAccount = availabilityAccount.get(0);
+			long milisecExpired = userAvaliabilityAccount.getExpiredDate().getTime();
+			long milisecStart = userAvaliabilityAccount.getStartDate().getTime();
+			
+			long milisecLeft = milisecExpired - milisecStart;
+			return milisecLeft;
+		}catch(Exception e){
+			return 0L;
+		}
 		
-		UserPayment userAvaliabilityAccount = availabilityAccount.get(0);
-		long milisecExpired = userAvaliabilityAccount.getExpiredDate().getTime();
-		long milisecStart = userAvaliabilityAccount.getStartDate().getTime();
-		
-		long milisecLeft = milisecExpired - milisecStart;
-		return milisecLeft;
 	}
 
 	public boolean checkUserPremiumStatus() {
