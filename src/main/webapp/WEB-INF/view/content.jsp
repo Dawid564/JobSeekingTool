@@ -34,8 +34,8 @@
 									value="${_csrf.token}" />
 							</form>
 							<div
-								class="col-md-offset-9 col-sm-offset-9  col-xs-offset-9 logOutBtn">
-								<button onclick="submitDocument()">LogOut</button>
+								class="col-md-offset-9 col-sm-offset-9 col-xs-offset-9 logOutBtn">
+								<button class="btn btn-default" onclick="submitDocument()">LogOut</button>
 							</div>
 						</sec:authorize>
 					</sec:authorize>
@@ -45,12 +45,12 @@
 					<sec:authorize access="isAnonymous()">
 						<div class="btn singBtn">
 							<form action="<c:url value="/register" />" method="GET">
-								<input type="submit" name="action" value="Sing Up" />
+								<input class="btn btn-default" type="submit" name="action" value="Sing Up" />
 							</form>
 						</div>
-						<div class="btn singBtn ">
+						<div class="btn singBtn">
 							<form action="<c:url value="/login" />" method="GET">
-								<input type="submit" name="action" value="Log In" />
+								<input class="btn btn-default" type="submit" name="action" value="Log In" />
 							</form>
 						</div>
 					</sec:authorize>
@@ -63,18 +63,18 @@
 	<section class="topMenu ">
 		<ul
 			class="topMenuList list-group col-md-offset-2 col-sm-offset-1 col-xs-offset-0 col-md-8 col-sm-10 col-xs-12">
-			<li
-				class="topMenuListElement btn btn-default col-md-3 col-sm-6 col-xs-12"><a
-				href="/"><spring:message code="menu.tab.first" /></a></li>
-			<li
-				class="topMenuListElement btn btn-default col-md-3 col-sm-6 col-xs-12"><a
-				href="content"><spring:message code="menu.tab.second" /></a></li>
-			<li
-				class="topMenuListElement btn btn-default col-md-3 col-sm-6 col-xs-12"><a
-				href="payment"><spring:message code="menu.tab.third" /></a></li>
-			<li
-				class="topMenuListElement btn btn-default col-md-3 col-sm-6 col-xs-12"><a
-				href="#"><spring:message code="menu.tab.fourth" /></a></li>
+			<li class="topMenuListElement"><a href="/webwork"
+				class="btn btn-default col-md-3 col-sm-6 col-xs-12"><spring:message
+						code="menu.tab.first" /></a></li>
+			<li class="topMenuListElement"><a href="content"
+				class="btn btn-default col-md-3 col-sm-6 col-xs-12"><spring:message
+						code="menu.tab.second" /></a></li>
+			<li class="topMenuListElement"><a href="payment"
+				class="btn btn-default col-md-3 col-sm-6 col-xs-12"><spring:message
+						code="menu.tab.third" /></a></li>
+			<li class="topMenuListElement"><a href="settings"
+				class="btn btn-default col-md-3 col-sm-6 col-xs-12"><spring:message
+						code="menu.tab.fourth" /></a></li>
 		</ul>
 	</section>
 	<!-- End Menu -->

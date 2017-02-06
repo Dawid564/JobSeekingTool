@@ -17,14 +17,15 @@ public class PaymentController {
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public String payment (Model model){
+		model.addAttribute("timeRemaining", servicePayment.getAvaliabilityAccount());
 		return "payment";
 	}
 	
 	@RequestMapping(value="/finish/{code}", method=RequestMethod.GET)
 	public String finishPayment(Model model, @PathVariable String code){
 		if(servicePayment.verificationPayment(code)){
-			model.addAttribute("result", "Payment Accepted");
-			return "paymentResult";
+			//model.addAttribute("result", "Payment Accepted");
+			return "redirect:/payment";
 		}else{
 			model.addAttribute("result", "Payment Does not Accepted");
 			return "paymentResult";

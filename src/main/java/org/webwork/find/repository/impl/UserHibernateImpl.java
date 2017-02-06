@@ -243,17 +243,13 @@ public class UserHibernateImpl implements UserHibernate{
 		}
 		
 		if(getUserPaymentFromDatabase(usr).isEmpty()){ //user buy his first subscription
-			System.out.println("WOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLO1");
 			getSession().save(userPayment);
 		}else if(startDate.after(userPaymentFromDatabase.getExpiredDate())){//when user extend his subscription before end his actual sub
-			System.out.println("WOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLO2");
 			getSession().createQuery("DELETE FROM UserPayment WHERE user= :userName").setParameter("userName", usr).executeUpdate();
 			getSession().saveOrUpdate(userPayment);
 		}else if(startDate.before(userPaymentFromDatabase.getExpiredDate())){//when user extend his subscription after end his actual sub
 			Long milisec = userPaymentFromDatabase.getExpiredDate().getTime() + 2592000000L; 
 			expiredDate.setTime(milisec);
-
-			System.out.println("WOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLO3");
 			userPayment.setExpiredDate(expiredDate);
 			getSession().createQuery("DELETE FROM UserPayment WHERE user= :userName").setParameter("userName", usr).executeUpdate();
 			getSession().save(userPayment);
@@ -262,11 +258,23 @@ public class UserHibernateImpl implements UserHibernate{
 	}
 	
 	@SuppressWarnings("unchecked")
-	private List<UserPayment> getUserPaymentFromDatabase(User u){
+	private List<UserPayment> getUserPaymentFromDatabase(User u){// get date when user bought sub and when sub will expired
 		List<UserPayment> user = new ArrayList<UserPayment>();
 		
 		user = getSession().createQuery("FROM UserPayment WHERE user= :userName").setParameter("userName", u).getResultList();
-		System.out.println("WOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLO5");
 		return user;
+	}
+
+	//return millisecond to account expired
+	public Long getAvaliabilityAccount() {
+		List<UserPayment> availabilityAccount = new ArrayList<UserPayment>();
+		availabilityAccount = getUserPaymentFromDatabase(getUserFromDatabase(getUserName()));
+		
+		UserPayment userAvaliabilityAccount = availabilityAccount.get(0);
+		long milisecExpired = userAvaliabilityAccount.getExpiredDate().getTime();
+		long milisecStart = userAvaliabilityAccount.getStartDate().getTime();
+		
+		long milisecLeft = milisecExpired - milisecStart;
+		return milisecLeft;
 	}
 }

@@ -20,4 +20,10 @@ public class ServicePaymentImpl implements ServicePayment{
 			return false;
 		}
 	}
+
+	public String getAvaliabilityAccount() {
+		Long milisec = userHibernate.getAvaliabilityAccount();
+		Long modernMilisec = ((((milisec/1000)/60)/60)/24);
+		return modernMilisec.toString();
+	}
 }
