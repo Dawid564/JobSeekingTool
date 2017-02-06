@@ -141,4 +141,5 @@ public class ContentController {
  *  try to type not normal date
  *  possibility to change password
  *  problem with new line symbol (enter) in text area
+ *  user role
  */

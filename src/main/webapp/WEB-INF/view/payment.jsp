@@ -95,6 +95,7 @@
 				height="1">
 		</form>
 		<h1>${timeRemaining}</h1>
+		<h1>${result}</h1>
 	</section>
 
 </body>

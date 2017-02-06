@@ -24,11 +24,11 @@ public class PaymentController {
 	@RequestMapping(value="/finish/{code}", method=RequestMethod.GET)
 	public String finishPayment(Model model, @PathVariable String code){
 		if(servicePayment.verificationPayment(code)){
-			//model.addAttribute("result", "Payment Accepted");
+			model.addAttribute("result", "Payment Accepted");
 			return "redirect:/payment";
 		}else{
 			model.addAttribute("result", "Payment Does not Accepted");
-			return "paymentResult";
+			return "redirect:/payment";
 		}
 		
 	}
