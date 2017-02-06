@@ -32,4 +32,9 @@ public class ServicePaymentImpl implements ServicePayment{
 			return modernMilisec.toString() + " Days Left";
 		}
 	}
+
+	public String checkUserPremiumStatus() {
+		
+		return null;
+	}
 }

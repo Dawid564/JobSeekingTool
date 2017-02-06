@@ -254,7 +254,34 @@ public class UserHibernateImpl implements UserHibernate{
 			getSession().createQuery("DELETE FROM UserPayment WHERE user= :userName").setParameter("userName", usr).executeUpdate();
 			getSession().save(userPayment);
 		}
+		addPremiumRole();
 		return null;
+	}
+	
+	private void addPremiumRole(){
+		UserRole userRole = new UserRole();
+		List<UserRole> usrRole = new ArrayList<UserRole>();
+		usrRole = getUserRoleList();
+		boolean premiumFlag = false;
+		
+		for(UserRole u : usrRole){
+			if(u.getRole().equals("ROLE_PREMIUM")){
+				premiumFlag = true;
+			}
+		}
+		
+		if(premiumFlag != true){
+			userRole.setRole("ROLE_PREMIUM");
+			userRole.setUser(getUserFromDatabase(getUserName()));
+			getSession().save(userRole);
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	private List<UserRole> getUserRoleList(){
+		List<UserRole> usrRole = new ArrayList<UserRole>();
+		usrRole = getSession().createQuery("FROM UserRole WHERE user= :userName").setParameter("userName", getUserFromDatabase(getUserName())).getResultList();
+		return usrRole;
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -276,5 +303,22 @@ public class UserHibernateImpl implements UserHibernate{
 		
 		long milisecLeft = milisecExpired - milisecStart;
 		return milisecLeft;
+	}
+
+	public boolean checkUserPremiumStatus() {
+		List<UserRole> user = new ArrayList<UserRole>();
+		user = getUserRoleList();
+		int counter = 0;
+		
+		for(UserRole u : user){
+			if(u.getRole().equals("ROLE_PREMIUM")){
+				counter++;
+			}
+		}
+		if(counter>0){
+			return true;
+		}else{
+			return false;
+		}
 	}
 }

@@ -16,4 +16,5 @@ public interface UserHibernate {
 	String updateSeekingProcess(SeekingProcess seekingProcess);
 	String addUserPayment();
 	Long getAvaliabilityAccount();
+	boolean checkUserPremiumStatus();
 }
