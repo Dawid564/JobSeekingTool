@@ -28,6 +28,7 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 	@Transactional(readOnly = true)
 	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
 		
+		
 		org.webwork.find.domain.User user = userHibernate.findUserByName(userName); //get user object from database
 		List<GrantedAuthority> authorities = buildUserAuthority(user.getUserRole());
 		

@@ -90,8 +90,7 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="/webwork"><spring:message
-							code="siteBrand"></spring:message></a>
+					<a class="navbar-brand" href="/webwork"><spring:message code="siteBrand"></spring:message></a>
 				</div>
 
 				<div class="collapse navbar-collapse"
@@ -101,46 +100,15 @@
 									code="menu.tab.first" /></a></li>
 						<li><a href="content"><spring:message
 									code="menu.tab.second" /></a></li>
-						<li class="active"><a href="payment"><spring:message
-									code="menu.tab.third" /><span class="sr-only">(current)</span></a></li>
-						<li><a href="settings"><spring:message
-									code="menu.tab.fourth" /></a></li>
+						<li><a href="payment"><spring:message
+									code="menu.tab.third" /></a></li>
+						<li class="active"><a href="settings"><spring:message
+									code="menu.tab.fourth" /><span class="sr-only">(current)</span></a></li>
 					</ul>
 				</div>
 			</div>
 		</nav>
 	</div>
 	<%--End menu Container --%>
-	<%--Content container starts --%>
-	<div class="col-md-offset-2 col-sm-offset-1 col-xs-offset-0 col-md-8 col-sm-10 col-xs-12">
-		<div class="col-md-3 col-sm-3 col-xs-12 ">
-			<div class="r">
-				<div class="">
-					<p class="paymentSubscriptionPanel col-md-12 col-sm-12 col-xs-12">Subscription</p>
-				</div>
-				<h1>container</h1>
-			</div>
-		</div>
-		<div class="r col-md-9 col-sm-9 col-xs-12">
-
-			<h1>HELLO PAYMENT</h1>
-			<form action="https://www.paypal.com/cgi-bin/webscr" method="post"
-				target="_top">
-				<input type="hidden" name="cmd" value="_s-xclick"> <input
-					type="hidden" name="hosted_button_id" value="4NVFD4P8RXUZL">
-				<input type="image"
-					src="https://www.paypalobjects.com/en_US/PL/i/btn/btn_buynowCC_LG.gif"
-					border="0" name="submit"
-					alt="PayPal - The safer, easier way to pay online!"> <img
-					alt="" border="0"
-					src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1"
-					height="1">
-			</form>
-			<h1>${timeRemaining}</h1>
-			<h1>${result}</h1>
-		</div>
-
-	</div>
-
 </body>
 </html>

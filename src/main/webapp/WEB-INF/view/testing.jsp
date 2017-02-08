@@ -10,6 +10,7 @@
 		<title>Registration</title>
 	</head>
 	<body>
+
 		<!-- Register FORM -->
 		<section>
 			<div id="registerForm" class="from-horizontal">

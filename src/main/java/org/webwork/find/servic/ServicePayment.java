@@ -4,4 +4,5 @@ public interface ServicePayment {
 	boolean verificationPayment(String code);
 	String getAvaliabilityAccount();
 	String checkUserPremiumStatus();
+	boolean getPremiumStatus();
 }

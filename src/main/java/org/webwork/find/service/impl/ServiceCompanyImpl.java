@@ -61,6 +61,10 @@ public class ServiceCompanyImpl implements ServiceCompany{
 	public String updateSeekingProcess(SeekingProcess seekingProcess) {
 		return userHibernate.updateSeekingProcess(seekingProcess);
 	}
+
+	public void expiredUserPremiumCheck() {
+		userHibernate.expiredUserPremiumCheck();
+	}
 	
 	
 	

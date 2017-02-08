@@ -17,6 +17,7 @@
 	<http auto-config="true" use-expressions="true">
 
 		<intercept-url pattern="/content**" access="hasRole('ROLE_USER')" />
+		<intercept-url pattern="/payment**" access="hasRole('ROLE_USER')" />
 		
 		<access-denied-handler error-page="/main" />
 		

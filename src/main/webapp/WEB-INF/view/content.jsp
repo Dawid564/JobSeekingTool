@@ -16,6 +16,18 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
 <script src="<c:url value="/resources/js/script.js" />"></script>
+<!-- Website CSS style -->
+<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+
+<!-- Website Font style -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+<!-- Google Fonts -->
+<link href='https://fonts.googleapis.com/css?family=Passion+One'
+	rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Oxygen'
+	rel='stylesheet' type='text/css'>
 </head>
 <body>
 
@@ -24,7 +36,10 @@
 		<div>
 			<div class="topContainer col-md-12 col-sm-12 col-xs-12">
 				<div
-					class="logo col-md-offset-2 col-sm-offset-2 col-xs-offset-0 col-md-1 col-sm-1 col-xs-1">Logo</div>
+					class="logo col-md-offset-2 col-sm-offset-2 col-xs-offset-0 col-md-1 col-sm-1 col-xs-1">
+					<img class="col-md-12 col-sm-12 col-xs-12"
+						src='<c:url value="resource/logo.png"/>' />
+				</div>
 				<div>
 					<sec:authorize access="isAuthenticated()">
 						<sec:authorize access="hasRole('ROLE_USER')" var="isUser">
@@ -62,25 +77,39 @@
 	</section>
 	<!-- End of top Container -->
 	<!-- Menu -->
-	<section class="topMenu ">
-		<ul
-			class="topMenuList list-group col-md-offset-2 col-sm-offset-1 col-xs-offset-0 col-md-8 col-sm-10 col-xs-12">
-			<li class="topMenuListElement"><a href="/webwork"
-				class="btn btn-default col-md-3 col-sm-6 col-xs-12"><spring:message
-						code="menu.tab.first" /></a></li>
-			<li class="topMenuListElement"><a href="content"
-				class="btn btn-default col-md-3 col-sm-6 col-xs-12"><spring:message
-						code="menu.tab.second" /></a></li>
-			<li class="topMenuListElement"><a href="payment"
-				class="btn btn-default col-md-3 col-sm-6 col-xs-12"><spring:message
-						code="menu.tab.third" /></a></li>
-			<li class="topMenuListElement"><a href="settings"
-				class="btn btn-default col-md-3 col-sm-6 col-xs-12"><spring:message
-						code="menu.tab.fourth" /></a></li>
-		</ul>
-	</section>
+	<div
+		class="col-md-offset-2 col-sm-offset-1 col-xs-offset-0 col-md-8 col-sm-10 col-xs-12 ">
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="/webwork"><spring:message code="siteBrand"></spring:message></a>
+				</div>
+
+				<div class="collapse navbar-collapse"
+					id="bs-example-navbar-collapse-2">
+					<ul class="nav navbar-nav">
+						<li><a href="/webwork"><spring:message
+									code="menu.tab.first" /></a></li>
+						<li class="active"><a href="content"><spring:message
+									code="menu.tab.second" /><span class="sr-only">(current)</span></a></li>
+						<li><a href="payment"><spring:message
+									code="menu.tab.third" /></a></li>
+						<li><a href="settings"><spring:message
+									code="menu.tab.fourth" /></a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</div>
 	<!-- End Menu -->
-	<div>${failValid}</div>
+	<div
+		class="col-md-offset-2 col-sm-offset-1 col-xs-offset-0 col-md-8 col-sm-10 col-xs-12 ">${failValid}</div>
 	<sec:authorize access="hasRole('ROLE_PREMIUM')">
 		<div class="container-fluid">
 			<!-- left side table -->

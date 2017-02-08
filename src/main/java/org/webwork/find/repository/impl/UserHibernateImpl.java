@@ -298,13 +298,20 @@ public class UserHibernateImpl implements UserHibernate{
 		availabilityAccount = getUserPaymentFromDatabase(getUserFromDatabase(getUserName()));
 		try{
 			UserPayment userAvaliabilityAccount = availabilityAccount.get(0);
-			long milisecExpired = userAvaliabilityAccount.getExpiredDate().getTime();
-			long milisecStart = userAvaliabilityAccount.getStartDate().getTime();
+			Date currentDate = new Date();
+			Date startDate = new Date(currentDate.getTime());// today 
 			
-			long milisecLeft = milisecExpired - milisecStart;
-			return milisecLeft;
+			if(startDate.before(userAvaliabilityAccount.getExpiredDate())){
+				long expiredDate = userAvaliabilityAccount.getExpiredDate().getTime();
+				long todayDate = startDate.getTime();
+				
+				return expiredDate - todayDate; //time to expired account 
+			}else{
+				expiredUserPremiumCheck();
+				return 0L; //control expired date
+			}
 		}catch(Exception e){
-			return 0L;
+			return 0L; //this should never be
 		}
 		
 	}
@@ -324,5 +331,12 @@ public class UserHibernateImpl implements UserHibernate{
 		}else{
 			return false;
 		}
+	}
+
+	public void expiredUserPremiumCheck() {
+		Query query = getSession().createQuery("DELETE FROM UserRole WHERE user= :userName AND role= :userRole");
+		query.setParameter("userName", getUserFromDatabase(getUserName()));
+		query.setParameter("userRole", "ROLE_PREMIUM");
+		query.executeUpdate();
 	}
 }

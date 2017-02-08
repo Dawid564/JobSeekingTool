@@ -18,4 +18,5 @@ public interface ServiceCompany {
 	SeekingProcess setProperProcess(String procesName);
 	boolean checkIsProcessExistInDatabase(String processName);
 	String updateSeekingProcess(SeekingProcess seekingProcess);
+	void expiredUserPremiumCheck();
 }

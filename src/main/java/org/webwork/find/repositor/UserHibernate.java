@@ -17,4 +17,5 @@ public interface UserHibernate {
 	String addUserPayment();
 	Long getAvaliabilityAccount();
 	boolean checkUserPremiumStatus();
+	void expiredUserPremiumCheck();
 }

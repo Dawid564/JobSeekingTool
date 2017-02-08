@@ -46,7 +46,7 @@ public class ContentController {
 		model.addAttribute("companyName", seekingProcessMapping.getCompanyName());
 		model.addAttribute("companyDescription", seekingProcessMapping.getCompanyDescription());
 		model.addAttribute("dataResumeSend", seekingProcessMapping.getDataResumeSend());
-		model.addAttribute("awaitSalary", seekingProcessMapping.getAwaitSalary()); //set proper wages
+		model.addAttribute("awaitSalary", seekingProcessMapping.getAwaitSalary()); 
 		model.addAttribute("listOfProcess", ServiceCompany.getSeekingProsessNames());
 		model.addAttribute("nameOfCurrentProcess", seekingProcessMapping.getProcessName());
 		model.addAttribute("contactEmail", seekingProcessMapping.getContactEmail());
@@ -58,30 +58,31 @@ public class ContentController {
 		model.addAttribute("weakness", seekingProcessMapping.getWeakness());
 		model.addAttribute("interviewPlace", seekingProcessMapping.getInterviewPlace());
 		model.addAttribute("interviewTime", seekingProcessMapping.getInterviewTime());
-		if(seekingProcessMapping.isSendResume()){
+		if (seekingProcessMapping.isSendResume()) {
 			model.addAttribute("checkBoxVal", true);
-		}else{
+		} else {
 			model.addAttribute("checkBoxVal", false);
 		}
-		if(seekingProcessMapping.isRightClothing()){
+		if (seekingProcessMapping.isRightClothing()) {
 			model.addAttribute("rightClothing", true);
-		}else{
+		} else {
 			model.addAttribute("rightClothing", false);
 		}
-		if(seekingProcessMapping.isRemindResume()){
+		if (seekingProcessMapping.isRemindResume()) {
 			model.addAttribute("remindResume", true);
-		}else{
+		} else {
 			model.addAttribute("remindResume", false);
 		}
-		if(seekingProcessMapping.isImportantDocs()){
+		if (seekingProcessMapping.isImportantDocs()) {
 			model.addAttribute("importantDocs", true);
-		}else{
+		} else {
 			model.addAttribute("importantDocs", false);
 		}
 		model.addAttribute("numberOfProcesses", ServiceCompany.getSeekingProsessNames().size());
 		model.addAttribute("createNewProcess", seek);
-		
-		model.addAttribute("failValid", servicePayment.checkUserPremiumStatus()); // if user isn't have premium account he see'll this message instead of tool
+			
+	    model.addAttribute("failValid", servicePayment.checkUserPremiumStatus()); // if user isn't have premium account he see'll this message instead of tool
+
 		return "content";
 	}
 	
@@ -137,7 +138,7 @@ public class ContentController {
 				e.printStackTrace();
 			}
 		}else{
-			System.out.println("Sorry File not found!!!");
+			System.out.println("Sorry File not found!!!"); //you'll never see this message
 		}
 	}
 }
@@ -149,4 +150,5 @@ public class ContentController {
  *  possibility to change password
  *  problem with new line symbol (enter) in text area
  *  user role
+ *  delete premium role after subscription end
  */
