@@ -85,7 +85,7 @@ public class SeekingProcess {
 	@Column(name="interviewPlace", nullable = false)
 	private String interviewPlace;
 	
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
 	@Column(name="interviewTime", nullable = true)
 	private Date interviewTime;
 

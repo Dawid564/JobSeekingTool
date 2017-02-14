@@ -18,9 +18,11 @@
 
 		<intercept-url pattern="/content**" access="hasRole('ROLE_USER')" />
 		<intercept-url pattern="/payment**" access="hasRole('ROLE_USER')" />
+		<intercept-url pattern="/settings**" access="hasRole('ROLE_USER')" />
+		<intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
 		
 		<access-denied-handler error-page="/main" />
-		
+		<session-management invalid-session-url="/login" />
 		<form-login
 			login-processing-url="/j_spring_security_check"
 		    login-page="/login"

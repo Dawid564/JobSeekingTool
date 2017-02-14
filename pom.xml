@@ -83,11 +83,27 @@
     	<artifactId>spring-aop</artifactId>
     	<version>4.3.3.RELEASE</version>
 	</dependency>
-	<dependency>
+<!-- 	<dependency>
     	<groupId>javax.persistence</groupId>
     	<artifactId>persistence-api</artifactId>
-    	<version>1.0</version>
-    </dependency>
+    	<version>1.0.2</version>
+    	<type>jar</type>
+		<scope>provided</scope>
+    </dependency> -->
+  <!--   <dependency>
+		<groupId>org.hibernate.javax.presistance</groupId>
+		<artifactId>hibernate-jpa-2.0-api</artifactId>
+		<version>1.0.1.Final</version>
+	</dependency>
+   <dependency>
+		<groupId>javax.presistance</groupId>
+		<artifactId>presistance-api</artifactId>
+		<version>1.0.2</version>
+		<type>jar</type>
+		<scope>provided</scope>
+	</dependency>-->
+
+
 
   </dependencies>
   <properties>

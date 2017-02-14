@@ -32,12 +32,7 @@
 <body>
 	<div id="login-box">
 
-		<c:if test="${not empty error}">
-			<div class="error">${error}</div>
-		</c:if>
-		<c:if test="${not empty msg}">
-			<div class="msg">${msg}</div>
-		</c:if>
+
 		<div class="container">
 			<div class="row main">
 				<div class="panel-heading">
@@ -50,6 +45,13 @@
 					</div>
 				</div>
 				<div class="main-login main-center">
+					<c:if test="${not empty error}">
+						<div class="error alertLabel">${error}</div>
+					</c:if>
+					<c:if test="${not empty msg}">
+						<div class="msg alertLabel">${msg}</div>
+					</c:if>
+					<div><p class="cols-sm-2 control-label text-center">${loginInfo}</p></div>
 					<form name='loginForm'
 						action="<c:url value='j_spring_security_check'/>" method='POST'>
 
@@ -70,7 +72,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i
-									class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
+										class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
 										type='password' name='password' class="form-control" />
 								</div>
 							</div>

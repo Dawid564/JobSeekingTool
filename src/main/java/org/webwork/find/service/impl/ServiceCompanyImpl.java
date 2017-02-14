@@ -4,6 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.webwork.find.domain.AlertMessage;
+import org.webwork.find.domain.ChangePassword;
+import org.webwork.find.domain.ContactMessages;
 import org.webwork.find.domain.RecrutationProcess;
 import org.webwork.find.domain.SeekingProcess;
 import org.webwork.find.domain.User;
@@ -64,6 +67,30 @@ public class ServiceCompanyImpl implements ServiceCompany{
 
 	public void expiredUserPremiumCheck() {
 		userHibernate.expiredUserPremiumCheck();
+	}
+
+	public void sendContactMessage(ContactMessages contactMessages) {
+		userHibernate.sendContactMessage(contactMessages);
+	}
+
+	public boolean updatePassword(ChangePassword changePassword) {
+		return userHibernate.updatePassword(changePassword);
+	}
+
+	public boolean userExists(User user) {
+		return userHibernate.userExists(user);
+	}
+
+	public void deleteAllAlerts() {
+		userHibernate.deleteAllAlerts();
+	}
+
+	public void createAlertMessage(AlertMessage alertMessage) {
+		userHibernate.createAlertMessage(alertMessage);
+	}
+
+	public String getAleryMessage() {
+		return userHibernate.getAleryMessage();
 	}
 	
 	

@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.webwork.find.servic.ServicePayment;
 
 @Controller
@@ -21,6 +22,7 @@ public class PaymentController {
 		return "payment";
 	}
 	
+	// does not work as i want
 	@RequestMapping(value="/finish/{code}", method=RequestMethod.GET)
 	public String finishPayment(Model model, @PathVariable String code){
 		if(servicePayment.verificationPayment(code)){
@@ -30,6 +32,10 @@ public class PaymentController {
 			model.addAttribute("result", "Payment Does not Accepted");
 			return "redirect:/payment";
 		}
-		
 	}
+	
+//	@RequestMapping(value="/status/", method=RequestMethod.GET)
+//	public String statusShow (Model model, @RequestParam){
+//		return null;
+//	}
 }

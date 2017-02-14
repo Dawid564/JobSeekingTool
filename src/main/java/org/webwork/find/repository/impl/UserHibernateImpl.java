@@ -7,8 +7,11 @@ import java.util.List;
 
 import javax.persistence.Query;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,6 +19,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
+import org.webwork.find.domain.AlertMessage;
+import org.webwork.find.domain.ChangePassword;
+import org.webwork.find.domain.ContactMessages;
 import org.webwork.find.domain.SeekingProcess;
 import org.webwork.find.domain.User;
 import org.webwork.find.domain.UserPayment;
@@ -108,26 +114,43 @@ public class UserHibernateImpl implements UserHibernate{
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String username = authentication.getName();
 
-		SeekingProcess tmpSeekingProcess = new SeekingProcess();
-		tmpSeekingProcess.setAwaitSalary("0");
-		tmpSeekingProcess.setProcessName(seekingProcess.getProcessName());
-		tmpSeekingProcess.setCompanyDescription("");
-		tmpSeekingProcess.setCompanyName("");
-		tmpSeekingProcess.setDataResumeSend("");
-		tmpSeekingProcess.setUser(getUserFromDatabase(username));
-		tmpSeekingProcess.setContactEmail("");
-		tmpSeekingProcess.setContactPhone("");
-		tmpSeekingProcess.setSendResume(false);
-		tmpSeekingProcess.setQuestionsPhoneCall("");
-		tmpSeekingProcess.setNotesPhoneCall("");
-		tmpSeekingProcess.setStrengths("");
-		tmpSeekingProcess.setWeakness("");
-		tmpSeekingProcess.setRightClothing(false);
-		tmpSeekingProcess.setRemindResume(false);
-		tmpSeekingProcess.setImportantDocs(false);
-		tmpSeekingProcess.setInterviewPlace("");
-		getSession().saveOrUpdate(tmpSeekingProcess);
+		if(checkNumberOfProcessPerUser(getUserFromDatabase(getUserName()))){
+			SeekingProcess tmpSeekingProcess = new SeekingProcess();
+			tmpSeekingProcess.setAwaitSalary("0");
+			tmpSeekingProcess.setProcessName(seekingProcess.getProcessName());
+			tmpSeekingProcess.setCompanyDescription("");
+			tmpSeekingProcess.setCompanyName("");
+			tmpSeekingProcess.setDataResumeSend("");
+			tmpSeekingProcess.setUser(getUserFromDatabase(username));
+			tmpSeekingProcess.setContactEmail("");
+			tmpSeekingProcess.setContactPhone("");
+			tmpSeekingProcess.setSendResume(false);
+			tmpSeekingProcess.setQuestionsPhoneCall("");
+			tmpSeekingProcess.setNotesPhoneCall("");
+			tmpSeekingProcess.setStrengths("");
+			tmpSeekingProcess.setWeakness("");
+			tmpSeekingProcess.setRightClothing(false);
+			tmpSeekingProcess.setRemindResume(false);
+			tmpSeekingProcess.setImportantDocs(false);
+			tmpSeekingProcess.setInterviewPlace("");
+			getSession().saveOrUpdate(tmpSeekingProcess);
+		}
+		
 		return "";
+	}
+	
+	//true if is less then 21 process per user
+	@SuppressWarnings("unchecked")
+	private boolean checkNumberOfProcessPerUser(User user){
+		List<SeekingProcess> list = new ArrayList<SeekingProcess>();
+		Query query = getSession().createQuery("FROM SeekingProcess WHERE userName= :userName").setParameter("userName", user);
+		list = query.getResultList();
+		try{
+			list.get(19);
+			return false;
+		}catch(Exception e){
+			return true;
+		}
 	}
 	
 	//get User object
@@ -194,28 +217,28 @@ public class UserHibernateImpl implements UserHibernate{
 		
 		Query queryForSide = getSession().createQuery("UPDATE SeekingProcess SET weakness= :weakness, strengths= :strengths WHERE user = :username");
 		//
-		query.setParameter("awaitSalary", seekingProcess.getAwaitSalary());
+		query.setParameter("awaitSalary", seekingProcess.getAwaitSalary().replaceAll("[\n\r]", " "));
 		query.setParameter("process", seekingProcess.getProcessName());
 		query.setParameter("username", getUserFromDatabase(getUserName()));
-		query.setParameter("companyName", seekingProcess.getCompanyName());
-		query.setParameter("companyDescription", seekingProcess.getCompanyDescription());
+		query.setParameter("companyName", seekingProcess.getCompanyName().replaceAll("[\n\r]", " "));
+		query.setParameter("companyDescription", seekingProcess.getCompanyDescription().replaceAll("[\n\r]", " "));
 		query.setParameter("dataResume", seekingProcess.getDataResumeSend());
-		query.setParameter("contactEmail", seekingProcess.getContactEmail());
-		query.setParameter("contactPhone", seekingProcess.getContactPhone());
+		query.setParameter("contactEmail", seekingProcess.getContactEmail().replaceAll("[\n\r]", " "));
+		query.setParameter("contactPhone", seekingProcess.getContactPhone().replaceAll("[\n\r]", " "));
 		query.setParameter("sendResume", seekingProcess.isSendResume());
 		query.setParameter("responseDate", seekingProcess.getResponseDate());
-		query.setParameter("questionsPhoneCall", seekingProcess.getQuestionsPhoneCall());
-		query.setParameter("notesPhoneCall", seekingProcess.getNotesPhoneCall());
+		query.setParameter("questionsPhoneCall", seekingProcess.getQuestionsPhoneCall().replaceAll("[\n\r]", " "));
+		query.setParameter("notesPhoneCall", seekingProcess.getNotesPhoneCall().replaceAll("[\n\r]", " "));
 		query.setParameter("rightClothing", seekingProcess.isRightClothing());
 		query.setParameter("remindResume", seekingProcess.isRemindResume());
 		query.setParameter("importantDocs", seekingProcess.isImportantDocs());
-		query.setParameter("interviewPlace", seekingProcess.getInterviewPlace());
+		query.setParameter("interviewPlace", seekingProcess.getInterviewPlace().replaceAll("[\n\r]", " "));
 		query.setParameter("interviewTime", seekingProcess.getInterviewTime());
 		
 		
 		queryForSide.setParameter("username", getUserFromDatabase(getUserName()));
-		queryForSide.setParameter("weakness", seekingProcess.getWeakness());
-		queryForSide.setParameter("strengths", seekingProcess.getStrengths());
+		queryForSide.setParameter("weakness", seekingProcess.getWeakness().replaceAll("[\n\r]", " "));
+		queryForSide.setParameter("strengths", seekingProcess.getStrengths().replaceAll("[\n\r]", " "));
 		
 		queryForSide.executeUpdate();
 		query.executeUpdate();
@@ -228,7 +251,7 @@ public class UserHibernateImpl implements UserHibernate{
 		Date startDate = new Date(currentDate.getTime());// today 
 		
 		Date expiredDate = new Date();
-		expiredDate.setTime(currentDate.getTime() + 2592000000L);// date when user account expired, add 30 days to current date
+		expiredDate.setTime(currentDate.getTime() + 2602000000L);// date when user account expired, add 30 days to current date
 		
 		User usr = new User();
 		usr = getUserFromDatabase(getUserName());
@@ -242,13 +265,13 @@ public class UserHibernateImpl implements UserHibernate{
 			userPaymentFromDatabase = getUserPaymentFromDatabase(usr).get(0);
 		}
 		
-		if(getUserPaymentFromDatabase(usr).isEmpty()){ //user buy his first subscription
+		if(getUserPaymentFromDatabase(usr).isEmpty()){ //user buy first subscription
 			getSession().save(userPayment);
-		}else if(startDate.after(userPaymentFromDatabase.getExpiredDate())){//when user extend his subscription before end his actual sub
+		}else if(startDate.after(userPaymentFromDatabase.getExpiredDate())){//when user extend subscription before end actual sub
 			getSession().createQuery("DELETE FROM UserPayment WHERE user= :userName").setParameter("userName", usr).executeUpdate();
 			getSession().saveOrUpdate(userPayment);
-		}else if(startDate.before(userPaymentFromDatabase.getExpiredDate())){//when user extend his subscription after end his actual sub
-			Long milisec = userPaymentFromDatabase.getExpiredDate().getTime() + 2592000000L; 
+		}else if(startDate.before(userPaymentFromDatabase.getExpiredDate())){//when user extend subscription after end actual sub
+			Long milisec = userPaymentFromDatabase.getExpiredDate().getTime() + 2682000000L; 
 			expiredDate.setTime(milisec);
 			userPayment.setExpiredDate(expiredDate);
 			getSession().createQuery("DELETE FROM UserPayment WHERE user= :userName").setParameter("userName", usr).executeUpdate();
@@ -338,5 +361,92 @@ public class UserHibernateImpl implements UserHibernate{
 		query.setParameter("userName", getUserFromDatabase(getUserName()));
 		query.setParameter("userRole", "ROLE_PREMIUM");
 		query.executeUpdate();
+	}
+
+	public void sendContactMessage(ContactMessages contactMessages) {
+		if(contactMessages.getMessage() != null){
+			ContactMessages contactMessages2 = contactMessages;
+			contactMessages2.setUser(getUserFromDatabase(getUserName()));
+			getSession().save(contactMessages2);
+		}
+	}
+	
+	//not working kek
+	@SuppressWarnings("unchecked")
+	public boolean updatePassword(ChangePassword changePassword) {
+		List<User> userList = new ArrayList<User>();
+		User usr = new User();
+		Query query = getSession().createQuery("FROM User WHERE userName= :userName").setParameter("userName", getUserFromDatabase(getUserName()));
+		userList = query.getResultList();
+		String hashPass = PasswordEncoderGenerator(changePassword.getOldPassword());
+		String existHashPass = null;
+		try{
+			System.out.println("pass2");
+			usr = userList.get(0);
+			existHashPass = usr.getPassword();
+
+			System.out.println("pass2 " + hashPass);
+			System.out.println("pass2 " + existHashPass);
+			if(hashPass.equals(existHashPass)){ //proceed to change pass
+				System.out.println("pass3");
+				String freshHashPassword = PasswordEncoderGenerator(changePassword.getFreshPassword());
+				Query qu = getSession().createQuery("UPDATE User SET password: =freshPassword WHERE userName= :userName AND password= :oldPassword")
+						.setParameter("fershPassword", freshHashPassword)
+						.setParameter("userName", usr.getFirstName())
+						.setParameter("oldPassword", existHashPass);
+				qu.executeUpdate();
+			}else{
+				return false;
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+			return false;
+		}
+		return false;
+	}
+
+	//check is user exist
+	@SuppressWarnings("unchecked")
+	public boolean userExists(User user) {
+		List<User> usr = new ArrayList<User>();
+		Query query = getSession().createQuery("FROM User WHERE userName= :userName")
+				.setParameter("userName", user.getFirstName());
+		
+		usr = query.getResultList();
+		if(usr.isEmpty()){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	@Override
+	public void deleteAllAlerts() {
+		Query query = getSession().createQuery("DELETE FROM AlertMessage");
+		query.executeUpdate();
+	}
+
+	@Override
+	public void createAlertMessage(AlertMessage alertMessage) {
+		System.out.println("createStart");
+
+		System.out.println("createStart" + alertMessage.getMessage());
+		getSession().save(alertMessage);
+		System.out.println("createStop");
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public String getAleryMessage() {
+		Query query = getSession().createQuery("FROM AlertMessage");
+		List<AlertMessage> alert = new ArrayList<>();
+		String msg = "";
+		try{
+			alert = query.getResultList();
+			msg = "from " + alert.get(0).getFrom() + " to " +  alert.get(0).getTo() + " " + alert.get(0).getMessage();
+		}catch(Exception e){
+			msg = "";
+		}
+		return msg;
 	}
 }

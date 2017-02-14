@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -43,11 +44,24 @@ public class ContentController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String mainProcessNames(Model model, @ModelAttribute("seekingObject") SeekingProcess seekingProcessMapping){ //get object for other controller     //old name login
 		SeekingProcess seek = new SeekingProcess();
+		
+		model.addAttribute("halo", seekingProcessMapping.getProcessName());
+		if(seekingProcessMapping.getProcessName() == null){
+			model.addAttribute("dProcess", "noProcess");
+		}
+		
+		//check user premium status
+		if(servicePayment.getPremiumStatus()){
+			model.addAttribute("premiumStatus", "visible");
+		}else{
+			model.addAttribute("premiumStatus", "hidden");
+		}
+		
 		model.addAttribute("companyName", seekingProcessMapping.getCompanyName());
 		model.addAttribute("companyDescription", seekingProcessMapping.getCompanyDescription());
 		model.addAttribute("dataResumeSend", seekingProcessMapping.getDataResumeSend());
 		model.addAttribute("awaitSalary", seekingProcessMapping.getAwaitSalary()); 
-		model.addAttribute("listOfProcess", ServiceCompany.getSeekingProsessNames());
+		model.addAttribute("listOfProcess", ServiceCompany.getSeekingProsessNames()); //list of process
 		model.addAttribute("nameOfCurrentProcess", seekingProcessMapping.getProcessName());
 		model.addAttribute("contactEmail", seekingProcessMapping.getContactEmail());
 		model.addAttribute("contactPhone", seekingProcessMapping.getContactPhone());
@@ -93,15 +107,22 @@ public class ContentController {
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
 	}
 	
-	//create or update process
+	//create process
 	@RequestMapping(method = RequestMethod.POST)
 	public String createNewProcessName(@ModelAttribute("createNewProcess") SeekingProcess seekingProcess, BindingResult result){
 		if(ServiceCompany.checkIsProcessExistInDatabase(seekingProcess.getProcessName())){// check is in the database is this process exists
 			ServiceCompany.createNewProcessName(seekingProcess); //when process does not exists
 		}else{
-			
-			ServiceCompany.updateSeekingProcess(seekingProcess); //only update existing process
+			//error this process exists
+			System.out.println("This process already exists");
 		}
+		return "redirect:/content";
+	}
+	
+	//update process
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String updateOldProcessName(@ModelAttribute("createNewProcess") SeekingProcess seekingProcess, BindingResult result){
+			ServiceCompany.updateSeekingProcess(seekingProcess); //only update existing process
 		return "redirect:/content";
 	}
 	
@@ -143,12 +164,6 @@ public class ContentController {
 	}
 }
 /** TODO known problems
- *  catch error when user add the same name second time 
- *  set maximum active process
- *  check if user choose one of existing process before he press mile stone button
- *  try to type not normal date
- *  possibility to change password
- *  problem with new line symbol (enter) in text area
- *  user role
- *  delete premium role after subscription end
+ *  display error when user add the same name process second time
+ *  auto logout ???
  */

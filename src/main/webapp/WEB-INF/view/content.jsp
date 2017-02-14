@@ -7,7 +7,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html>
 <head>
-<title>Main Company Process</title>
+<title>Tool Seeking</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
@@ -88,7 +88,8 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="/webwork"><spring:message code="siteBrand"></spring:message></a>
+					<a class="navbar-brand" href="/webwork"><spring:message
+							code="siteBrand"></spring:message></a>
 				</div>
 
 				<div class="collapse navbar-collapse"
@@ -110,7 +111,8 @@
 	<!-- End Menu -->
 	<div
 		class="col-md-offset-2 col-sm-offset-1 col-xs-offset-0 col-md-8 col-sm-10 col-xs-12 ">${failValid}</div>
-	<sec:authorize access="hasRole('ROLE_PREMIUM')">
+	<div id="seekingToolAccess">
+		<%--<sec:authorize access="hasRole('ROLE_PREMIUM')"> --%>
 		<div class="container-fluid">
 			<!-- left side table -->
 
@@ -149,7 +151,8 @@
 			</div>
 			<!-- end of left side table -->
 			<!-- Top add process panel -->
-			<div class="topAddPanel container col-md-6 col-sm-12 col-xs-12">
+			<div class="topAddPanel container col-md-6 col-sm-12 col-xs-12"
+				id="seekingToolProcess">
 				<form:form modelAttribute="createNewProcess" id="processNameForm"
 					action="/webwork/content">
 					<!-- type="submit"  -->
@@ -158,277 +161,306 @@
 						value="<spring:message
 						code="top.panel.button"/>" />
 					<form:input class="form-control" id="processName"
-						path="processName" type="text" />
+						path="processName" type="text" placeHolder="Name of process" />
 					<p id="alert" class="alertLabel"></p>
 				</form:form>
-				<div class="mainContentPanel col-md-12 col-sm-12 col-xs-12">
-					<form:form modelAttribute="createNewProcess"
-						id="wholeSeekingProcess" action="/webwork/content">
-						<div>
-							<form:input path="processName" name="processName"
-								id="processName" type="hidden" value="${nameOfCurrentProcess}" />
-						</div>
-						<div class="topFormElement">
-							<p class="col-md-4 col-sm-4 col-xs-4">
-								<spring:message code="company.name" />
-							</p>
-							<div class="col-md-8 col-sm-8 col-xs-8">
-								<form:input class="form-control" path="companyName"
-									id="companyName" type="text" value="${companyName}" />
-							</div>
-						</div>
-						<div class="correctTextArea">
-							<p class="col-md-4 col-sm-4 col-xs-4">
-								<spring:message code="company.description" />
-							</p>
-							<div class="col-md-8 col-sm-8 col-xs-8">
-								<form:textarea class="form-control" path="companyDescription"
-									id="companyDescription" type="text" rows="5"
-									value="${companyDescription}" />
-								<script>
-									checkTextarea("${companyDescription}");
-								</script>
-							</div>
-						</div>
-						<div class="topFormElement">
-							<p class="col-md-4 col-sm-4 col-xs-4">
-								<spring:message code="await.salary" />
-							</p>
-							<div class="col-md-8 col-sm-8 col-xs-8">
-								<form:input class="form-control" path="awaitSalary"
-									id="awaitSalary" type="text" value="${awaitSalary}" />
-							</div>
-						</div>
-						<div class="topFormElement">
-							<p class="col-md-4 col-sm-4 col-xs-4">
-								<spring:message code="contactEmail" />
-							</p>
-							<div class="col-md-8 col-sm-8 col-xs-8">
-								<form:input class="form-control" path="contactEmail"
-									id="contactEmail" type="text" value="${contactEmail}" />
-							</div>
-						</div>
-						<div class="topFormElement">
-							<p class="col-md-4 col-sm-4 col-xs-4">
-								<spring:message code="contactPhone" />
-							</p>
-							<div class="col-md-8 col-sm-8 col-xs-8">
-								<form:input class="form-control" path="contactPhone"
-									id="contactPhone" type="text" value="${contactPhone}" />
-							</div>
-						</div>
-						<div class="holdImage col-md-12 col-sm-12 col-xs-12">
-							<p>Download Free Resume Sample</p>
-							<div class="col-md-4 col-sm-4 col-xs-6">
-								<img class="col-md-12 col-sm-12 col-xs-12"
-									src='<c:url value="resource/test.png"/>' /> <input
-									class="btn btn-primary firstMilestone col-md-12 col-sm-12 col-xs-12"
-									type="button" value="download directly"
-									onclick="window.location='/webwork/content/download/test.png';" />
-							</div>
-							<div class="col-md-4 col-sm-4 col-xs-6">
-								<img class="col-md-12 col-sm-12 col-xs-12"
-									src='<c:url value="resource/test.png"/>' /> <input
-									class="btn btn-primary firstMilestone col-md-12 col-sm-12 col-xs-12"
-									type="button" value="download directly"
-									onclick="window.location='/webwork/content/download/test.png';" />
-							</div>
-							<div class="col-md-4 col-sm-4 col-xs-6">
-								<img class="col-md-12 col-sm-12 col-xs-12"
-									src='<c:url value="resource/test.png"/>' /> <input
-									class="btn btn-primary firstMilestone col-md-12 col-sm-12 col-xs-12"
-									type="button" value="download directly"
-									onclick="window.location='/webwork/content/download/test.png';" />
-							</div>
-						</div>
-						<div class="midFormElement">
-							<p class="col-md-4 col-sm-4 col-xs-4">
-								<spring:message code="resume.send" />
-							</p>
-							<div class="col-md-8 col-sm-8 col-xs-8">
-								<form:input class="form-control" path="dataResumeSend"
-									id="dataResumeSend" type="text" value="${dataResumeSend}" />
-							</div>
-						</div>
-
-						<%-- place for date --%>
-
-						<div class="midFormElement">
-							<p class="col-md-4 col-sm-4 col-xs-4">
-								<spring:message code="expectedAnswer" />
-							</p>
-							<div class="col-md-8 col-sm-8 col-xs-8">
-								<form:input class="datePicker form-control" id="responseDate"
-									type="text" name="responseDate" path="responseDate"
-									value="${responseDate}" />
-							</div>
-							<p id="responseDateError"
-								class="alertLabel col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-md-8 col-sm-8 col-xs-8"></p>
-							<script>
-								responseDate("${responseDate}");
-							</script>
-						</div>
-						<div class="midFormElement">
-							<p class="col-md-4 col-sm-4 col-xs-4">
-								<spring:message code="sendResume" />
-							</p>
-							<div class="col-md-8 col-sm-8 col-xs-8">
-								<form:checkbox class="form-control" path="sendResume"
-									value="send" id="sendResume" />
-								<script>
-									checkCheckBox("${checkBoxVal}");
-								</script>
-							</div>
-						</div>
-						<div class="firstMilestone col-md-12 col-sm-12 col-xs-12">
-							<input class="btn btn-primary col-md-12 col-sm-12 col-xs-12"
-								value="<spring:message code="first.mile.stone"/>"
-								id="firstMileStone" type="button" onclick="sendFirstMileStone()" />
-						</div>
-
-						<div id="secondPart"
-							class="col-md-12 col-sm-12 col-xs-12 secondPart">
-							<div class="correctTextArea">
-								<p class="col-md-4 col-sm-4 col-xs-4">
-									<spring:message code="questions.Phone.Call" />
-								</p>
-								<div class="col-md-8 col-sm-8 col-xs-8">
-									<form:textarea class="form-control" path="questionsPhoneCall"
-										id="questionsPhoneCall" type="text" rows="5"
-										value="${questionsPhoneCall}" />
-									<script>
-										checkTextareaWQuestions("${questionsPhoneCall}");
-									</script>
-								</div>
-							</div>
-							<div class="correctTextArea">
-								<p class="col-md-4 col-sm-4 col-xs-4">
-									<spring:message code="notes.Phone.Call" />
-								</p>
-								<div class="col-md-8 col-sm-8 col-xs-8">
-									<form:textarea class="form-control" path="notesPhoneCall"
-										id="notesPhoneCall" type="text" rows="5"
-										value="${notesPhoneCall}" />
-									<script>
-										checkTextareaNotes("${notesPhoneCall}");
-									</script>
-								</div>
-							</div>
-							<section class="col-md-12 col-sm-12 col-xs-12">
-								<div class="correctTextAreaStrength col-md-6 col-sm-6 col-xs-6">
-									<p class="col-md-12 col-sm-12 col-xs-12">
-										<spring:message code="strengths" />
-									</p>
-									<div class="col-md-12 col-sm-12 col-xs-12">
-										<form:textarea class="form-control" path="strengths"
-											id="strengths" type="text" rows="15" value="${strengths}" />
-										<script>
-											checkTextareaStrengths("${strengths}");
-										</script>
-									</div>
-								</div>
-								<div class="correctTextAreaStrength col-md-6 col-sm-6 col-xs-6">
-									<p class="col-md-12 col-sm-12 col-xs-12">
-										<spring:message code="weakness" />
-									</p>
-									<div class="col-md-12 col-sm-12 col-xs-12">
-										<form:textarea class="form-control" path="weakness"
-											id="weakness" type="text" rows="15" value="${weakness}" />
-										<script>
-											checkTextareaWeakness("${weakness}");
-										</script>
-									</div>
-								</div>
-							</section>
-						</div>
-						<div class="firstMilestone col-md-12 col-sm-12 col-xs-12">
-							<input class="btn btn-primary col-md-12 col-sm-12 col-xs-12"
-								value="<spring:message code="second.mile.stone"/>"
-								id="firstMileStone" type="button" onclick="sendFirstMileStone()" />
-						</div>
-
-						<div id="thirdPart">
-							<p class="col-md-12 col-sm-12 col-xs-12">Prepare To Interview</p>
-							<div id="todo">
-								<p class="col-md-4 col-sm-4 col-xs-4">TO DO List</p>
-								<div class="col-md-8 col-sm-8 col-xs-8">
-									<div class="col-md-12 col-sm-12 col-xs-12">
-										<div class="col-md-1 col-sm-1 col-xs-1">
-											<form:checkbox path="rightClothing" id="rightClothing" />
-										</div>
-										<div class="col-md-10 col-sm-10 col-xs-10">
-											<p>
-												<spring:message code="rightClothing" />
-											</p>
-										</div>
-										<script>
-											checkCheckBoxRightClothing("${rightClothing}")
-										</script>
-									</div>
-									<div class="col-md-12 col-sm-12 col-xs-12">
-										<div class="col-md-1 col-sm-1 col-xs-1">
-											<form:checkbox path="remindResume" id="remindResume" />
-										</div>
-										<div class="col-md-10 col-sm-10 col-xs-10">
-											<p>
-												<spring:message code="remindResume" />
-											</p>
-										</div>
-										<script>
-											checkCheckBoxRemindResume("${remindResume}")
-										</script>
-									</div>
-									<div class="col-md-12 col-sm-12 col-xs-12">
-										<div class="col-md-1 col-sm-1 col-xs-1">
-											<form:checkbox path="importantDocs" id="importantDocs" />
-										</div>
-										<div class="col-md-10 col-sm-10 col-xs-10">
-											<p>
-												<spring:message code="importantDocs" />
-											</p>
-										</div>
-										<script>
-											checkCheckBoxImportantDocs("${importantDocs}")
-										</script>
-									</div>
-								</div>
-							</div>
+				<div id="seekingToolProcessContentForm">
+					<div class="mainContentPanel col-md-12 col-sm-12 col-xs-12">
+						<form:form modelAttribute="createNewProcess"
+							id="wholeSeekingProcess" action="/webwork/content/update">
 							<div>
-								<div class="topFormElement">
-									<p class="col-md-4 col-sm-4 col-xs-4">
-										<spring:message code="interviewPlace" />
-									</p>
-									<div class="col-md-8 col-sm-8 col-xs-8">
-										<form:input class="form-control" path="interviewPlace"
-											id="interviewPlace" type="text" value="${interviewPlace}" />
-									</div>
+								<form:input path="processName" name="processName"
+									id="processName" type="hidden" value="${nameOfCurrentProcess}" />
+							</div>
+							<div class="topFormElement">
+								<p class="col-md-4 col-sm-4 col-xs-4">
+									<spring:message code="company.name" />
+								</p>
+								<div class="col-md-8 col-sm-8 col-xs-8">
+									<form:input class="form-control" path="companyName"
+										id="companyName" type="text" value="${companyName}" />
+								</div>
+							</div>
+							<div class="correctTextArea">
+								<p class="col-md-4 col-sm-4 col-xs-4">
+									<spring:message code="company.description" />
+								</p>
+								<div class="col-md-8 col-sm-8 col-xs-8">
+									<form:textarea class="form-control" path="companyDescription"
+										id="companyDescription" type="text" rows="5"
+										value="${companyDescription}"
+										placeHolder="How big is this company? How many employees? etc. " />
+									<script>
+										checkTextarea("${companyDescription}");
+									</script>
 								</div>
 							</div>
 							<div class="topFormElement">
 								<p class="col-md-4 col-sm-4 col-xs-4">
-									<spring:message code="interviewDate" />
+									<spring:message code="await.salary" />
 								</p>
 								<div class="col-md-8 col-sm-8 col-xs-8">
-									<form:input class="datePicker form-control" id="interviewTime"
-										type="text" name="interviewTime" path="interviewTime"
-										value="${interviewTime}" />
+									<form:input class="form-control" path="awaitSalary"
+										id="awaitSalary" type="text" value="${awaitSalary}" />
+								</div>
+							</div>
+							<div class="topFormElement">
+								<p class="col-md-4 col-sm-4 col-xs-4">
+									<spring:message code="contactEmail" />
+								</p>
+								<div class="col-md-8 col-sm-8 col-xs-8">
+									<form:input class="form-control" path="contactEmail"
+										id="contactEmail" type="text" value="${contactEmail}" />
+								</div>
+							</div>
+							<div class="topFormElement">
+								<p class="col-md-4 col-sm-4 col-xs-4">
+									<spring:message code="contactPhone" />
+								</p>
+								<div class="col-md-8 col-sm-8 col-xs-8">
+									<form:input class="form-control" path="contactPhone"
+										id="contactPhone" type="text" value="${contactPhone}" />
+								</div>
+							</div>
+							<div class="holdImage col-md-12 col-sm-12 col-xs-12">
+								<p>Download Free Resume Sample</p>
+								<div class="col-md-4 col-sm-4 col-xs-6">
+									<img class="col-md-12 col-sm-12 col-xs-12"
+										src='<c:url value="resource/resume1.png"/>' /> <input
+										class="btn btn-primary firstMilestone col-md-12 col-sm-12 col-xs-12"
+										type="button" value="<spring:message code="download"/>"
+										onclick="window.location='/webwork/content/download/resume1.rar';" />
+									<%--http://www.freepik.com/free-vector/simple-resume_1014731.htm --%>
+								</div>
+								<div class="col-md-4 col-sm-4 col-xs-6">
+									<img class="col-md-12 col-sm-12 col-xs-12"
+										src='<c:url value="resource/resume2.png"/>' /> <input
+										class="btn btn-primary firstMilestone col-md-12 col-sm-12 col-xs-12"
+										type="button" value="<spring:message code="download"/>"
+										onclick="window.location='/webwork/content/download/resume2.rar';" />
+									<%--http://www.freepik.com/free-vector/professional-resume-template_837838.htm --%>
+								</div>
+								<div class="col-md-4 col-sm-4 col-xs-6">
+									<img class="col-md-12 col-sm-12 col-xs-12"
+										src='<c:url value="resource/resume3.png"/>' /> <input
+										class="btn btn-primary firstMilestone col-md-12 col-sm-12 col-xs-12"
+										type="button" value="<spring:message code="download"/>"
+										onclick="window.location='/webwork/content/download/resume3.rar';" />
+									<%--http://www.freepik.com/free-vector/simple-and-useful-resume-template_1025270.htm --%>
+								</div>
+							</div>
+							<div class="midFormElement">
+								<p class="col-md-4 col-sm-4 col-xs-4">
+									<spring:message code="resume.send" />
+								</p>
+								<div class="col-md-8 col-sm-8 col-xs-8">
+									<form:input class="form-control" path="dataResumeSend"
+										placeHolder="YYYY-MM-DD HH:MM:SS" id="dataResumeSend" type="text"
+										value="${dataResumeSend}" />
+								</div>
+							</div>
+
+							<%-- place for date --%>
+
+							<div class="midFormElement">
+								<p class="col-md-4 col-sm-4 col-xs-4">
+									<spring:message code="expectedAnswer" />
+								</p>
+								<div class="col-md-8 col-sm-8 col-xs-8">
+									<form:input class="datePicker form-control" id="responseDate"
+										type="text" name="responseDate" path="responseDate"
+										placeHolder="YYYY-MM-DD HH:MM:SS" value="${responseDate}" />
 								</div>
 								<p id="responseDateError"
 									class="alertLabel col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-md-8 col-sm-8 col-xs-8"></p>
 								<script>
-									interviewTime("${interviewTime}");
+									responseDate("${responseDate}");
 								</script>
 							</div>
-						</div>
-						<div class="firstMilestone col-md-12 col-sm-12 col-xs-12">
-							<input class="btn btn-primary col-md-12 col-sm-12 col-xs-12"
-								value="<spring:message code="third.mile.stone"/>"
-								id="firstMileStone" type="button" onclick="sendFirstMileStone()" />
-						</div>
-					</form:form>
+							<div class="midFormElement">
+								<div id="">
+									<p class="col-md-4 col-sm-4 col-xs-4">TO DO List</p>
+									<div class="col-md-8 col-sm-8 col-xs-8">
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											<div class="col-md-1 col-sm-1 col-xs-1">
+												<form:checkbox class="correctCheckbox form-control" path="sendResume"
+													value="send" id="sendResume" />
+											</div>
+											<div></div>
+											<div class="col-md-11 col-sm-11 col-xs-11">
+												<p>
+													<spring:message code="sendResume" />
+												</p>
+											</div>
+											<script>
+												checkCheckBox("${checkBoxVal}");
+											</script>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="firstMilestone col-md-12 col-sm-12 col-xs-12">
+								<input class="btn btn-primary col-md-12 col-sm-12 col-xs-12"
+									value="<spring:message code="first.mile.stone"/>"
+									id="firstMileStone" type="button"
+									onclick="sendFirstMileStone()" />
+							</div>
+							<div id="secondPart"
+								class="col-md-12 col-sm-12 col-xs-12 secondPart">
+								<p class="col-md-12 col-sm-12 col-xs-12">Prepare to phone answer</p>
+								<div class="correctTextArea1">
+									<p class="col-md-4 col-sm-4 col-xs-4">
+										<spring:message code="questions.Phone.Call" />
+									</p>
+									<div class="col-md-8 col-sm-8 col-xs-8">
+										<form:textarea class="form-control" path="questionsPhoneCall"
+											id="questionsPhoneCall" type="text" rows="5"
+											value="${questionsPhoneCall}" />
+										<script>
+											checkTextareaWQuestions("${questionsPhoneCall}");
+										</script>
+									</div>
+								</div>
+								<div class="correctTextArea">
+									<p class="col-md-4 col-sm-4 col-xs-4">
+										<spring:message code="notes.Phone.Call" />
+									</p>
+									<div class="col-md-8 col-sm-8 col-xs-8">
+										<form:textarea class="form-control" path="notesPhoneCall"
+											id="notesPhoneCall" type="text" rows="5"
+											value="${notesPhoneCall}" />
+										<script>
+											checkTextareaNotes("${notesPhoneCall}");
+										</script>
+									</div>
+								</div>
+								<section class="col-md-12 col-sm-12 col-xs-12">
+									<div class="correctTextAreaStrength col-md-6 col-sm-6 col-xs-6">
+										<p class="col-md-12 col-sm-12 col-xs-12">
+											<spring:message code="strengths" />
+										</p>
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											<form:textarea class="form-control" path="strengths"
+												id="strengths" type="text" rows="15" value="${strengths}" />
+											<script>
+												checkTextareaStrengths("${strengths}");
+											</script>
+										</div>
+									</div>
+									<div class="correctTextAreaStrength col-md-6 col-sm-6 col-xs-6">
+										<p class="col-md-12 col-sm-12 col-xs-12">
+											<spring:message code="weakness" />
+										</p>
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											<form:textarea class="form-control" path="weakness"
+												id="weakness" type="text" rows="15" value="${weakness}" />
+											<script>
+												checkTextareaWeakness("${weakness}");
+											</script>
+										</div>
+									</div>
+								</section>
+							</div>
+							<div class="firstMilestone col-md-12 col-sm-12 col-xs-12">
+								<input class="btn btn-primary col-md-12 col-sm-12 col-xs-12"
+									value="<spring:message code="second.mile.stone"/>"
+									id="firstMileStone" type="button"
+									onclick="sendFirstMileStone()" />
+							</div>
+
+							<div id="thirdPart">
+								<p class="col-md-12 col-sm-12 col-xs-12">Prepare To
+									Interview</p>
+								<div id="todo">
+									<p class="col-md-4 col-sm-4 col-xs-4">TO DO List</p>
+									<div class="col-md-8 col-sm-8 col-xs-8">
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											<div class="col-md-1 col-sm-1 col-xs-1">
+												<form:checkbox path="rightClothing" id="rightClothing" />
+											</div>
+											<div class="col-md-10 col-sm-10 col-xs-10">
+												<p>
+													<spring:message code="rightClothing" />
+												</p>
+											</div>
+											<script>
+												checkCheckBoxRightClothing("${rightClothing}")
+											</script>
+										</div>
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											<div class="col-md-1 col-sm-1 col-xs-1">
+												<form:checkbox path="remindResume" id="remindResume" />
+											</div>
+											<div class="col-md-10 col-sm-10 col-xs-10">
+												<p>
+													<spring:message code="remindResume" />
+												</p>
+											</div>
+											<script>
+												checkCheckBoxRemindResume("${remindResume}")
+											</script>
+										</div>
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											<div class="col-md-1 col-sm-1 col-xs-1">
+												<form:checkbox path="importantDocs" id="importantDocs" />
+											</div>
+											<div class="col-md-10 col-sm-10 col-xs-10">
+												<p>
+													<spring:message code="importantDocs" />
+												</p>
+											</div>
+											<script>
+												checkCheckBoxImportantDocs("${importantDocs}")
+											</script>
+										</div>
+									</div>
+								</div>
+								<div>
+									<div class="topFormElement1">
+										<p class="col-md-4 col-sm-4 col-xs-4">
+											<spring:message code="interviewPlace" />
+										</p>
+										<div class="col-md-8 col-sm-8 col-xs-8">
+											<form:input class="form-control" path="interviewPlace"
+												id="interviewPlace" type="text" value="${interviewPlace}" />
+										</div>
+									</div>
+								</div>
+								<div class="topFormElement1">
+									<p class="col-md-4 col-sm-4 col-xs-4">
+										<spring:message code="interviewDate" />
+									</p>
+									<div class="col-md-8 col-sm-8 col-xs-8">
+										<form:input class="datePicker form-control" id="interviewTime"
+											type="text" name="interviewTime" path="interviewTime" placeHolder="YYYY-MM-DD HH:MM:SS"
+											value="${interviewTime}" />
+									</div>
+									<p id="responseDateError"
+										class="alertLabel col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-md-8 col-sm-8 col-xs-8"></p>
+									<script>
+										interviewTime("${interviewTime}");
+									</script>
+								</div>
+							</div>
+							<div class="firstMilestone col-md-12 col-sm-12 col-xs-12">
+								<input class="btn btn-primary col-md-12 col-sm-12 col-xs-12"
+									value="<spring:message code="third.mile.stone"/>"
+									id="firstMileStone" type="button"
+									onclick="sendFirstMileStone()" />
+							</div>
+						</form:form>
+					</div>
 				</div>
 			</div>
 		</div>
-	</sec:authorize>
+		<%--</sec:authorize> --%>
+	</div>
+	<script>
+		access('${premiumStatus}')
+	</script>
+	<script>
+		mainContentVisibleSettings('${halo}')
+	</script>
+
 </body>
 </html>

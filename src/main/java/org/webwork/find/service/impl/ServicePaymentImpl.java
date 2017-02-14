@@ -25,7 +25,7 @@ public class ServicePaymentImpl implements ServicePayment{
 		Long milisec = userHibernate.getAvaliabilityAccount();
 		Long modernMilisec = milisec;
 		if(modernMilisec == 0L){
-			return "Your Account has expired";
+			return "Inactive";
 		}else if(modernMilisec <= 172800000L){
 			modernMilisec = (((milisec/1000)/60)/60);
 			return modernMilisec.toString() + " Hours Left";

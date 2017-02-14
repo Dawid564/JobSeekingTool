@@ -44,8 +44,9 @@
 			</div>
 			<div class="main-login main-center">
 				<form:form id="registerForm" modelAttribute="newUser" method="post">
-
+					
 					<div class="form-group">
+					<div class="alertLabel">${userError}</div>
 						<label for="name" class="cols-sm-2 control-label">Your
 							Name</label>
 						<div class="cols-sm-10">
@@ -54,21 +55,23 @@
 									aria-hidden="true"></i></span>
 								<form:input path="firstName" type="text" class="form-control"></form:input>
 							</div>
+							
 						</div>
 					</div>
-
 					<div class="form-group">
+					<div class="alertLabel" id="registerEmailValidation"></div>
 						<label for="email" class="cols-sm-2 control-label">Your
 							Email</label>
 						<div class="cols-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon"><i
 									class="fa fa-envelope fa" aria-hidden="true"></i></span>
-								<form:input path="email" type="text" class="form-control"></form:input>
+								<form:input path="email" type="text" class="form-control" id="registerFormEmail"></form:input>
 							</div>
 						</div>
 					</div>
 					<div class="form-group">
+					<div class="alertLabel" id="registerPassValidation"></div>
 						<label for="password" class="cols-sm-2 control-label">Password</label>
 						<div class="cols-sm-10">
 							<div class="input-group">
@@ -79,7 +82,6 @@
 							</div>
 						</div>
 					</div>
-
 					<div class="form-group">
 						<label for="confirm" class="cols-sm-2 control-label">Confirm
 							Password</label>
@@ -91,7 +93,6 @@
 							</div>
 						</div>
 					</div>
-
 					<div class="form-group ">
 						<button type="button"
 							class="btn btn-primary btn-lg btn-block login-button"

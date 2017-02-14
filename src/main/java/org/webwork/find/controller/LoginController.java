@@ -22,7 +22,7 @@ public class LoginController {
 			@RequestParam(value = "logout", required = false) String logout) {
 		ModelAndView model = new ModelAndView();
 		if (error != null) {
-			model.addObject("error", "Invalid username and password");
+			model.addObject("error", "Invalid username or password");
 		}
 		if (logout != null) {
 			model.addObject("msg", "You've been logged out successfully");
@@ -44,10 +44,17 @@ public class LoginController {
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public ModelAndView registration(@ModelAttribute("newUser") User user) {
 		ModelAndView model = new ModelAndView();
-		model.addObject("firstName", user.getFirstName());
-		model.addObject("lastName", user.getLastName());
-		model.addObject("response", serviceCompany.addNewUser(user));
-		model.setViewName("testing");
+		if(!serviceCompany.userExists(user)){//user already exists
+			//can't create user
+			model.addObject("userError", "user already exists");
+			model.setViewName("/register");
+		}else{
+			//can create user
+			model.addObject("response", serviceCompany.addNewUser(user));
+			model.addObject("loginInfo", "Account has created, now you can Log In");
+			model.setViewName("/login");
+		}
+		
 		return model;
 	}
 }

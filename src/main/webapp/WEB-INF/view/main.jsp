@@ -7,7 +7,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html>
 <head>
-<title>Main Company Process</title>
+<title>Main</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
@@ -89,7 +89,8 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="/webwork"><spring:message code="siteBrand"></spring:message></a>
+					<a class="navbar-brand" href="/webwork"><spring:message
+							code="siteBrand"></spring:message></a>
 				</div>
 
 				<div class="collapse navbar-collapse"
@@ -111,20 +112,114 @@
 	<%--End menu Container --%>
 	<!-- Main Part Starts -->
 	<div class="col-md-12 col-sm-12 col-xs-12">
-		<section class="mainFirstContainer">
+
+		<div class="mainFirstContainer col-md-12 col-sm-12 col-xs-12">
 			<div
 				class="col-md-offset-2 col-sm-offset-2 col-xs-offset-0 col-md-10 col-sm-10 col-xs-12">
 				<!-- Description -->
-				<h1>The best Solution for You</h1>
+					<div class="alertLabel">${alertMessage}</div>
+				<h1>The best solution for you</h1>
+				<div class="col-md-8 col-sm-8 col-xs-12">
+					<div class="col-md-6 col-sm-6 col-xs-12"><spring:message code="main.top.best.solution"/></div>
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						<a
+							href="http://www.freepik.com/free-vector/jobs-background-design_1024506.htm"><img
+							class="logo2 col-md-12 col-sm-12 col-xs-12"
+							src='<c:url value="resource/webjob.png"/>' /></a>
+					</div>
+				</div>
 			</div>
-		</section>
-		<section class="mainSecondContainer ">
+		</div>
+		<div class="mainSecondContainer col-md-12 col-sm-12 col-xs-12">
 			<div
-				class="col-md-offset-2 col-sm-offset-2 col-xs-offset-0 col-md-8 col-sm-9 col-xs-12">
+				class="col-md-offset-2 col-sm-offset-2 col-xs-offset-0 col-md-10 col-sm-10 col-xs-12">
 				<!-- About Us -->
 				<h1>About Us</h1>
+				<div class="col-md-8 col-sm-8 col-xs-12">
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						<spring:message code="about.us" />
+					</div>
+					<div class="im col-md-6 col-sm-6 col-xs-12">
+						<a
+							href="http://www.freepik.com/free-vector/business-banners-set_957343.htm"><img
+							class="logo2 col-md-12 col-sm-12 col-xs-12"
+							src='<c:url value="resource/carrierLog.png"/>' /></a>
+					</div>
+				</div>
+			</div> 
+		</div>
+		<div class="mainThirdContainer col-md-12 col-sm-12 col-xs-12">
+			<div
+				class="col-md-offset-2 col-sm-offset-2 col-xs-offset-0 col-md-10 col-sm-10 col-xs-12">
+				<!-- Description -->
+				<h1>What you'll get</h1>
+				<div class="thirdContent col-md-8 col-sm-8 col-xs-12">
+					<div class="col-md-3 col-sm-3 col-xs-6">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<img class="col-md-12 col-sm-12 col-xs-12"
+								src='<c:url value="resource/Application.png"/>' />
+						</div>
+						<div class="text-center col-md-12 col-sm-12 col-xs-12">Powerful application</div>
+					</div>
+					<div class="col-md-3 col-sm-3 col-xs-6">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<img class="col-md-12 col-sm-12 col-xs-12"
+								src='<c:url value="resource/ChartAreaUp.png"/>' />
+						</div>
+						<div class="text-center col-md-12 col-sm-12 col-xs-12">Grow
+							your effectiveness</div>
+					</div>
+					<div class="col-md-3 col-sm-3 col-xs-6">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<img class="col-md-12 col-sm-12 col-xs-12"
+								src='<c:url value="resource/Web.png"/>' />
+						</div>
+						<div class="text-center col-md-12 col-sm-12 col-xs-12">Access
+							anywhere</div>
+					</div>
+					<div class="col-md-3 col-sm-3 col-xs-6">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<img class="col-md-12 col-sm-12 col-xs-12"
+								src='<c:url value="resource/Webcam.png"/>' />
+						</div>
+						<div class="text-center col-md-12 col-sm-12 col-xs-12">Control your progress</div>
+					</div>
+				</div>
 			</div>
-		</section>
+		</div>
+		<div class="mainfourthContainer col-md-12 col-sm-12 col-xs-12">
+			<div
+				class="col-md-offset-2 col-sm-offset-2 col-xs-offset-0 col-md-10 col-sm-10 col-xs-12">
+				<!-- About Us -->
+				<h1>How it works</h1>
+				<div class="fourthContent col-md-8 col-sm-8 col-xs-12">
+					<div class="col-md-4 col-sm-4 col-xs-12">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<img class="col-md-12 col-sm-12 col-xs-12"
+								src='<c:url value="resource/CreditCards.png"/>' />
+						</div>
+						<div class="text-center col-md-12 col-sm-12 col-xs-12">Buy
+							for 1$/30 days access</div>
+					</div>
+					<div class="col-md-4 col-sm-4 col-xs-12">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<img class="col-md-12 col-sm-12 col-xs-12"
+								src='<c:url value="resource/Application.png"/>' />
+						</div>
+						<div class="text-center col-md-12 col-sm-12 col-xs-12">Use
+							application</div>
+					</div>
+					<div class="col-md-4 col-sm-4 col-xs-12">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<img class="col-md-12 col-sm-12 col-xs-12"
+								src='<c:url value="resource/Briefcase.png"/>' />
+						</div>
+						<div class="text-center col-md-12 col-sm-12 col-xs-12">Get
+							the job</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 
 </body>

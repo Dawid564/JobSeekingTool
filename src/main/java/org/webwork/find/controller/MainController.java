@@ -19,6 +19,13 @@ public class MainController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String getAllCompanys(Model model) {
+		
+		if(serviceCompany.getAleryMessage() != ""){
+			model.addAttribute("alertMessage", serviceCompany.getAleryMessage());
+		}else{
+			System.out.println("adljfhadkjfhakjdfnkadjf");
+		}
+		
 		model.addAttribute("company", serviceCompany.getAllCompanys());
 		model.addAttribute("testUserRole", serviceCompany.getStatus());
 		return "main";

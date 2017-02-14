@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(event) {
-	// do nothing
+
 });
 function checkCheckBox(c) {
 	if (c == "true") {
@@ -62,6 +62,10 @@ function sendFirstMileStone() {
 function setProcessOnFront(processId) {
 	document.getElementById('getProcessHidden').value = processId;
 	document.getElementById('getProcessId').submit();
+	
+	//show main tool
+	//document.getElementById("seekingToolProcessContentForm").style.visibility = "visible";
+	
 }
 function checkTextarea(txt) {
 	document.getElementById("companyDescription").value = txt;
@@ -95,19 +99,56 @@ function interviewTime(responseDate) {
 	// }
 }
 function checkPass() {
+	//check if password is the same
+	var counter = 0;
+	
 	var pass1 = document.getElementById("pass1").value;
-	console.log("pass1 " + pass1);
 	var pass2 = document.getElementById("pass2").value;
-	console.log("pass2 " + pass2);
 	if (pass1 == pass2) {
-		alert("passwords is the same");
-		setForm();
+		counter = counter + 1;
 	} else {
-		alert("passwords is diffrent");
+		document.getElementById("registerPassValidation").innerHTML = "passwords are not the same";
+	}
+	
+	if(pass1.length < 5){
+		document.getElementById("registerPassValidation").innerHTML = "passwords must have at least 6 characters";
+	}else{
+		counter = counter + 1;
+	}
+	
+	//check email
+	var emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	var email = document.getElementById("registerFormEmail").value;
+	if(emailRegex.test(email)){
+		counter = counter + 1;
+	}else{
+		document.getElementById("registerEmailValidation").innerHTML = "email is not correct";
+	}
+		
+	if(counter==3){
+		setForm();
 	}
 }
 
 function setForm() {
-	console.log("how often i see this");
 	document.getElementById("registerForm").submit();
 }
+function passwordFormScript(){
+	alert("Wlecome Sir!!!");
+	document.getElementById('settingsPasswordForm').submit();
+}
+function access(access){
+	var doc = document.getElementById("seekingToolAccess").style.visibility = access;
+}
+
+function mainContentVisibleSettings(vis){
+	//hidden main tool
+	if(vis == ""){
+		document.getElementById("seekingToolProcessContentForm").style.visibility = "hidden";
+	}else{
+		document.getElementById("seekingToolProcessContentForm").style.visibility = "visible";
+	}
+}
+
+
+

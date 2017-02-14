@@ -7,7 +7,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html>
 <head>
-<title>Main Company Process</title>
+<title>Contact</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
@@ -90,7 +90,8 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="/webwork"><spring:message code="siteBrand"></spring:message></a>
+					<a class="navbar-brand" href="/webwork"><spring:message
+							code="siteBrand"></spring:message></a>
 				</div>
 
 				<div class="collapse navbar-collapse"
@@ -110,5 +111,92 @@
 		</nav>
 	</div>
 	<%--End menu Container --%>
+	<%--settings --%>
+	<div
+		class="col-md-offset-3 col-sm-offset-1 col-xs-offset-0 col-md-6 col-sm-10 col-xs-12">
+		<div class="row">
+			<%--send message --%>
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div>
+					<h4>Contact</h4>
+				</div>
+				<div class="">
+					<div class="paymentControl">
+						<div class="col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-md-10 col-sm-10 col-xs-10">
+							<%--nothing here --%>	
+						</div>
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<form:form modelAttribute="contactForm" id="settingsContactForm"
+								action="/webwork/settings/contact">
+								<div class="topFormElement col-md-12 col-sm-12 col-xs-12">
+									<form:textarea class="correctTextArea1 form-control" id="message" path="message" type="text" row="6"/>
+								</div>
+								<div class="col-md-12 col-sm-12 col-xs-12">
+									<input class="btn btn-primary" type="submit" value="Send Message" name="contactForm"
+										id="settingsMessageSubmit" />
+								</div>
+							</form:form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div>
+		<%-- work in progress
+			change password 
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<div>
+						<h4>Change password</h4>
+					</div>
+					<div class="">
+						<div class="paymentControl">
+							<div class="col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-md-10 col-sm-10 col-xs-10">
+								nothing here 	
+							</div>
+							<div class="topFormElement col-md-12 col-sm-12 col-xs-12">
+								<form:form modelAttribute="passwordForm"
+									id="settingsPasswordForm" action="/webwork/settings/contact">
+									<div class="col-md-12 col-sm-12 col-xs-12">
+										<div class="row">
+											<div class="col-md-4 col-sm-4 col-xs-4">
+												<p>Old password</p>
+											</div>
+											<div class="col-md-4 col-sm-6 col-xs-8">
+												<form:input class="form-control" path="oldPassword" id="oldPassword"
+													type="password" />
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-4 col-sm-4 col-xs-4">
+												<p>New password</p>
+											</div>
+											<div class="col-md-4 col-sm-6 col-xs-8">
+												<form:input class="form-control" path="freshPassword" id="freshPassword"
+													type="password" />
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-4 col-sm-4 col-xs-4">
+												<p>Re-type new password</p>
+											</div>
+											<div class="col-md-4 col-sm-6 col-xs-8">
+												<input class="form-control" id="freshPassword2"
+													type="password" />
+											</div>
+										</div>
+									</div>
+									<div class="col-md-12 col-sm-12 col-xs-12">
+										<input class="btn btn-primary" type="submit" name="passForm" value="Change Password"/>
+									</div>
+								</form:form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			 --%>
+		</div>
+	</div>
 </body>
 </html>
