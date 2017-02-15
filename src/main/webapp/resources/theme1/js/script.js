@@ -111,7 +111,7 @@ function checkPass() {
 	}
 	
 	if(pass1.length < 5){
-		document.getElementById("registerPassValidation").innerHTML = "passwords must have at least 6 characters";
+		document.getElementById("registerPassValidation").innerHTML = "password must have at least 6 characters";
 	}else{
 		counter = counter + 1;
 	}
@@ -124,8 +124,18 @@ function checkPass() {
 	}else{
 		document.getElementById("registerEmailValidation").innerHTML = "email is not correct";
 	}
+	
+	//check user login
+	var fisrtNameForm = document.getElementById("registerUserForm");
+	console.log(fisrtNameForm.value.length);
+	var nameLength = fisrtNameForm.value.length;
+	if(nameLength < 5){
+		document.getElementById("registerUserValidation").innerHTML = "login must have at least 6 characters";
+	}else{
+		counter = counter + 1;
+	}
 		
-	if(counter==3){
+	if(counter==4){
 		setForm();
 	}
 }

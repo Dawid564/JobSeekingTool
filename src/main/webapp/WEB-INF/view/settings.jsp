@@ -118,7 +118,7 @@
 			<%--send message --%>
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<div>
-					<h4>Contact</h4>
+					<h4>Contact, Feedback etc.</h4>
 				</div>
 				<div class="">
 					<div class="paymentControl">

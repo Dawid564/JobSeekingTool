@@ -47,15 +47,15 @@
 					
 					<div class="form-group">
 					<div class="alertLabel">${userError}</div>
+					<div class="alertLabel" id="registerUserValidation"></div>
 						<label for="name" class="cols-sm-2 control-label">Your
 							Name</label>
 						<div class="cols-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-user fa"
 									aria-hidden="true"></i></span>
-								<form:input path="firstName" type="text" class="form-control"></form:input>
+								<form:input path="firstName" type="text" class="form-control" id="registerUserForm"></form:input>
 							</div>
-							
 						</div>
 					</div>
 					<div class="form-group">
