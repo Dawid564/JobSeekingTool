@@ -59,13 +59,13 @@
 					<sec:authorize access="isAnonymous()">
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<div class="btn singBtn col-md-4 col-sm-4 col-xs-4">
-								<form action="<c:url value="/register" />" method="GET">
+								<form action="<c:url value="register" />" method="GET">
 									<input class="btn btn-default" type="submit" name="action"
 										value="Sing Up" />
 								</form>
 							</div>
 							<div class="btn singBtn col-md-4 col-sm-4 col-xs-4">
-								<form action="<c:url value="/login" />" method="GET">
+								<form action="<c:url value="login" />" method="GET">
 									<input class="btn btn-default" type="submit" name="action"
 										value="Log In" />
 								</form>
@@ -89,14 +89,14 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="/webwork"><spring:message
+					<a class="navbar-brand" href="/"><spring:message
 							code="siteBrand"></spring:message></a>
 				</div>
 
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-2">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="/webwork"><spring:message
+						<li class="active"><a href="/"><spring:message
 									code="menu.tab.first" /><span class="sr-only">(current)</span></a></li>
 						<li><a href="content"><spring:message
 									code="menu.tab.second" /></a></li>

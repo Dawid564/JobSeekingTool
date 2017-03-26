@@ -90,15 +90,14 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="/webwork"><spring:message
+					<a class="navbar-brand" href="/"><spring:message
 							code="siteBrand"></spring:message></a>
 				</div>
 
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-2">
 					<ul class="nav navbar-nav">
-						<li><a href="/webwork"><spring:message
-									code="menu.tab.first" /></a></li>
+						<li><a href="/"><spring:message code="menu.tab.first" /></a></li>
 						<li><a href="content"><spring:message
 									code="menu.tab.second" /></a></li>
 						<li class="active"><a href="payment"><spring:message
@@ -116,7 +115,7 @@
 		<div
 			class="col-md-offset-3 col-sm-offset-1 col-xs-offset-0 col-md-6 col-sm-10 col-xs-12">
 			<%--left panel --%>
-			<div class="col-md-3 col-sm-3 col-xs-12 paymentControl"> 
+			<div class="col-md-3 col-sm-3 col-xs-12 paymentControl">
 				<div class="row">
 					<div class="">
 						<p
@@ -143,7 +142,7 @@
 					</div>
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<p>- Control your progress</p>
-					</div> 
+					</div>
 				</div>
 				<div class="bot">
 					<div class="row">
@@ -165,7 +164,8 @@
 					</div>
 					<div class="row">
 						<div class="paymentControl">
-							<div class="col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-md-7 col-sm-6 col-xs-5">
+							<div
+								class="col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-md-7 col-sm-6 col-xs-5">
 								<h4>PREMIUM STATUS</h4>
 							</div>
 							<div class="col-md-4 col-sm-5 col-xs-6">
@@ -184,16 +184,18 @@
 							<div
 								class="col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-md-10 col-sm-10 col-xs-10 paymentDesc">
 								<div>
-									<p>Purchase a subscription is fast, simple and secure with
-										PayPal. If you need help just contact with us through this
-									<a href="settings">link</a>
-									.</p>
+									<p>
+										Purchase a subscription is fast, simple and secure with
+										PayPal. If you need help just contact with us through this <a
+											href="settings">link</a> .
+									</p>
 								</div>
 							</div>
 							<div
 								class="col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-md-10 col-sm-10 col-xs-10">
 								<div>
-									<p>For 1$ you'll get 30 days access to tool which support process of job seeking</p>
+									<p>For 1$ you'll get 30 days access to tool which support
+										process of job seeking</p>
 								</div>
 							</div>
 							<div
@@ -205,9 +207,9 @@
 							<div
 								class="col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-md-10 col-sm-10 col-xs-10">
 								<div>
-									<p>If your account has expired, you can't use tool, but your
-										data is not erase. When you'll buy premium again you retrieve all
-										data.</p>
+									<p>If your account expired, you can't use our tool, but we
+										doesn't erase your data. When you'll buy premium again you
+										retrieve all data.</p>
 								</div>
 							</div>
 						</div>
@@ -219,27 +221,28 @@
 				</div>
 				<div class="">
 					<div class="paymentControl">
-						<div class="col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-md-10 col-sm-10 col-xs-10">
+						<div
+							class="col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-md-10 col-sm-10 col-xs-10">
 						</div>
 					</div>
-				
-				<div class="">
-					<div
-						class="payPalForm col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-md-10 col-sm-10 col-xs-10">
-						<form action="https://www.paypal.com/cgi-bin/webscr" method="post"
-							target="_top">
-							<input type="hidden" name="cmd" value="_s-xclick"> <input
-								type="hidden" name="hosted_button_id" value="4NVFD4P8RXUZL">
-							<input type="image"
-								src="https://www.paypalobjects.com/en_US/PL/i/btn/btn_buynowCC_LG.gif"
-								border="0" name="submit"
-								alt="PayPal - The safer, easier way to pay online!"> <img
-								alt="" border="0"
-								src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif"
-								width="1" height="1">
-						</form>
+
+					<div class="">
+						<div
+							class="payPalForm col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-md-10 col-sm-10 col-xs-10">
+							<form action="https://www.paypal.com/cgi-bin/webscr"
+								method="post" target="_top">
+								<input type="hidden" name="cmd" value="_s-xclick"> <input
+									type="hidden" name="hosted_button_id" value="4NVFD4P8RXUZL">
+								<input type="image"
+									src="https://www.paypalobjects.com/en_US/PL/i/btn/btn_buynowCC_LG.gif"
+									border="0" name="submit"
+									alt="PayPal - The safer, easier way to pay online!"> <img
+									alt="" border="0"
+									src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif"
+									width="1" height="1">
+							</form>
+						</div>
 					</div>
-				</div>
 				</div>
 			</div>
 

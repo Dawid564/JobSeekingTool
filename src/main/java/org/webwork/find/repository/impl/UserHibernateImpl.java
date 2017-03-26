@@ -67,6 +67,8 @@ public class UserHibernateImpl implements UserHibernate{
 			userRole.setRole("ROLE_USER");
 			session.save(userRole);
 			
+			
+			
 			return "Account has created";
 		}catch(Exception e){
 			e.printStackTrace();
@@ -93,6 +95,7 @@ public class UserHibernateImpl implements UserHibernate{
 		user = getSession().createQuery("FROM User WHERE firstName=?").setParameter(0, userName).getResultList();
 		
 		if (user.size() > 0) {
+			
 			return user.get(0);
 		} else {
 			return null;

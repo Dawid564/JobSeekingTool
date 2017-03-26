@@ -20,6 +20,10 @@ public class ServicePaymentImpl implements ServicePayment{
 			return false;
 		}
 	}
+	
+	public void freePremium(){
+		userHibernate.addUserPayment();
+	}
 
 	public String getAvaliabilityAccount() {
 		Long milisec = userHibernate.getAvaliabilityAccount();

@@ -10,8 +10,6 @@ import org.webwork.find.domain.ContactMessages;
 import org.webwork.find.domain.RecrutationProcess;
 import org.webwork.find.domain.SeekingProcess;
 import org.webwork.find.domain.User;
-import org.webwork.find.repositor.InMemoryCompany;
-import org.webwork.find.repositor.JdbcCorporate;
 import org.webwork.find.repositor.UserHibernate;
 import org.webwork.find.servic.ServiceCompany;
 
@@ -19,15 +17,10 @@ import org.webwork.find.servic.ServiceCompany;
 public class ServiceCompanyImpl implements ServiceCompany{
 	private String status;
 	
-	@Autowired
-	InMemoryCompany inMemoryCompany;
 	
 	@Autowired
 	UserHibernate userHibernate;
 	
-	public List<RecrutationProcess> getAllCompanys() {
-		return inMemoryCompany.getAllCompanys();
-	}
 
 	public String addNewUser(User user) {
 		return userHibernate.addNewUser(user);
@@ -91,6 +84,12 @@ public class ServiceCompanyImpl implements ServiceCompany{
 
 	public String getAleryMessage() {
 		return userHibernate.getAleryMessage();
+	}
+
+	@Override
+	public List<RecrutationProcess> getAllCompanys() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

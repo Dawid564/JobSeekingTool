@@ -36,7 +36,7 @@ function submitDocument() {
 function checkAddProcessName() {
 	var data = document.getElementById('processName').value;
 	if (data == "") {
-		document.getElementById('alert').innerHTML = "This gap can't be empty";
+		document.getElementById('alert').innerHTML = "This field can't be empty";
 	} else {
 		document.getElementById('alert').innerHTML = "";
 		document.getElementById('processNameForm').submit();

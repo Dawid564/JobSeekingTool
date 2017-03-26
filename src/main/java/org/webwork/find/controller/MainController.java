@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.webwork.find.servic.ServiceCompany;
 
 @Controller
-@RequestMapping()
+@RequestMapping(value = "")
 public class MainController {
 
 	@Autowired
@@ -16,6 +16,19 @@ public class MainController {
 
 	@Autowired
 	LoginController loginController;
+	
+	@RequestMapping(value = "", method = RequestMethod.GET)
+	public String setStart (Model model){
+		if(serviceCompany.getAleryMessage() != ""){
+			model.addAttribute("alertMessage", serviceCompany.getAleryMessage());
+		}else{
+			//do nothing
+		}
+		
+		model.addAttribute("company", serviceCompany.getAllCompanys());
+		model.addAttribute("testUserRole", serviceCompany.getStatus());
+		return "main";
+	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String getAllCompanys(Model model) {
@@ -23,7 +36,7 @@ public class MainController {
 		if(serviceCompany.getAleryMessage() != ""){
 			model.addAttribute("alertMessage", serviceCompany.getAleryMessage());
 		}else{
-			System.out.println("adljfhadkjfhakjdfnkadjf");
+			//do nothing
 		}
 		
 		model.addAttribute("company", serviceCompany.getAllCompanys());

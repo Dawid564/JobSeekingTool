@@ -88,14 +88,14 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="/webwork"><spring:message
+					<a class="navbar-brand" href="/"><spring:message
 							code="siteBrand"></spring:message></a>
 				</div>
 
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-2">
 					<ul class="nav navbar-nav">
-						<li><a href="/webwork"><spring:message
+						<li><a href="/"><spring:message
 									code="menu.tab.first" /></a></li>
 						<li class="active"><a href="content"><spring:message
 									code="menu.tab.second" /><span class="sr-only">(current)</span></a></li>
@@ -129,7 +129,7 @@
 				<div>
 					<c:forEach items="${listOfProcess}" var="process">
 						<div class="">
-							<form action="/webwork/content/look/" method="get"
+							<form action="/content/look/" method="get"
 								id="getProcessId">
 								<input type="hidden" name="getProcess" id="getProcessHidden" />
 								<input
@@ -138,7 +138,7 @@
 									onclick="setProcessOnFront('${process.processName}')"></input>
 								<!-- <p>${process.processName}</p>  -->
 							</form>
-							<form action="/webwork/content/del/" method="get" id="delButton">
+							<form action="/content/del/" method="get" id="delButton">
 								<input type="hidden" name="processTitle" id="hiddenButton" /> <input
 									class="btn btn-danger col-md-4 col-sm-4 col-xs-4" type="button"
 									onclick="delButton('${process.processName}')"
@@ -154,7 +154,7 @@
 			<div class="topAddPanel container col-md-6 col-sm-12 col-xs-12"
 				id="seekingToolProcess">
 				<form:form modelAttribute="createNewProcess" id="processNameForm"
-					action="/webwork/content">
+					action="/content">
 					<!-- type="submit"  -->
 					<input class="btn btn-primary col-md-12 col-sm-12 col-xs-12"
 						type="button" onclick="checkAddProcessName()"
@@ -167,7 +167,7 @@
 				<div id="seekingToolProcessContentForm">
 					<div class="mainContentPanel col-md-12 col-sm-12 col-xs-12">
 						<form:form modelAttribute="createNewProcess"
-							id="wholeSeekingProcess" action="/webwork/content/update">
+							id="wholeSeekingProcess" action="/content/update">
 							<div>
 								<form:input path="processName" name="processName"
 									id="processName" type="hidden" value="${nameOfCurrentProcess}" />

@@ -5,4 +5,5 @@ public interface ServicePayment {
 	String getAvaliabilityAccount();
 	String checkUserPremiumStatus();
 	boolean getPremiumStatus();
+	void freePremium();
 }

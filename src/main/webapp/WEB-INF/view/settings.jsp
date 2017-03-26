@@ -90,15 +90,14 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="/webwork"><spring:message
+					<a class="navbar-brand" href="/"><spring:message
 							code="siteBrand"></spring:message></a>
 				</div>
 
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-2">
 					<ul class="nav navbar-nav">
-						<li><a href="/webwork"><spring:message
-									code="menu.tab.first" /></a></li>
+						<li><a href="/"><spring:message code="menu.tab.first" /></a></li>
 						<li><a href="content"><spring:message
 									code="menu.tab.second" /></a></li>
 						<li><a href="payment"><spring:message
@@ -122,17 +121,20 @@
 				</div>
 				<div class="">
 					<div class="paymentControl">
-						<div class="col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-md-10 col-sm-10 col-xs-10">
-							<%--nothing here --%>	
+						<div
+							class="col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-md-10 col-sm-10 col-xs-10">
+							<%--nothing here --%>
 						</div>
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<form:form modelAttribute="contactForm" id="settingsContactForm"
-								action="/webwork/settings/contact">
+								action="/settings/contact">
 								<div class="topFormElement col-md-12 col-sm-12 col-xs-12">
-									<form:textarea class="correctTextArea1 form-control" id="message" path="message" type="text" row="6"/>
+									<form:textarea class="correctTextArea1 form-control"
+										id="message" path="message" type="text" row="6" />
 								</div>
 								<div class="col-md-12 col-sm-12 col-xs-12">
-									<input class="btn btn-primary" type="submit" value="Send Message" name="contactForm"
+									<input class="btn btn-primary" type="submit"
+										value="Send Message" name="contactForm"
 										id="settingsMessageSubmit" />
 								</div>
 							</form:form>
@@ -140,9 +142,22 @@
 					</div>
 				</div>
 			</div>
+			<div >
+				<div class="col-md-12 col-sm-12 col-xs-12">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<form action="/settings/freePremium">
+							<input class="btn btn-primary" type="submit" value="Free Premium"
+								name="freePremium" id="FreeMessageSubmit" />
+					</form>
+					</div>
+					</div>
+				</div>
+			</div>
 		</div>
+
 		<div>
-		<%-- work in progress
+			<%-- work in progress
 			change password 
 			<div class="row">
 				<div class="col-md-12 col-sm-12 col-xs-12">
